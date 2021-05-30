@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/ship/ship.tres" type="Texture" id=1]
+[ext_resource path="res://scenes/Ship.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "floating"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7, 1.1, 1.7, 2.3, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0.039, 0.28 ), Vector2( 0.104, 0.815 ), Vector2( 0.233, 0.815 ), Vector2( -0.148, 0.408 ), Vector2( -0.191, 0.275 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 343.967, 190.902 )
+
+[node name="Ship" type="KinematicBody2D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_horizontal_guides_": [  ]
+}
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( -0.2, -1.055 )
+build_mode = 1
+polygon = PoolVector2Array( -10.452, 4.47288, 12.4624, 4.36777, 16.8053, 1.05365, 12.3331, -1.60167, -10.4799, -1.59672, -13.236, -0.455198, -13.1864, 2.96763 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/floating = SubResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+monitoring = false
+monitorable = false
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( -354.585, 0 )
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+offset = Vector2( 0.315331, -7.25273 )
+
+[node name="DetectionDelay" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
+[connection signal="timeout" from="DetectionDelay" to="." method="_on_DetectionDelay_timeout"]
