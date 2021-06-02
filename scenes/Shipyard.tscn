@@ -1,30 +1,114 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/Establishments/shipyard2[4].png" type="Texture" id=1]
 [ext_resource path="res://assets/Establishments/shipyard2[2].png" type="Texture" id=2]
 [ext_resource path="res://assets/Establishments/shipyard1.png" type="Texture" id=3]
 [ext_resource path="res://assets/Establishments/shipyard2[1].png" type="Texture" id=4]
 [ext_resource path="res://assets/Establishments/shipyard2[3].png" type="Texture" id=5]
+[ext_resource path="res://assets/ships/ship2.tres" type="Texture" id=6]
+[ext_resource path="res://scenes/Shipyard.gd" type="Script" id=7]
+[ext_resource path="res://assets/ships/ship1.tres" type="Texture" id=8]
+[ext_resource path="res://assets/ships/ship.tres" type="Texture" id=9]
+[ext_resource path="res://assets/ships/ship4.tres" type="Texture" id=10]
+[ext_resource path="res://assets/ships/ship3.tres" type="Texture" id=11]
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 27.7776, 12.32 )
+
+[sub_resource type="SpriteFrames" id=5]
 animations = [ {
-"frames": [ ExtResource( 4 ) ],
-"loop": true,
-"name": "idle",
+"frames": [  ],
+"loop": false,
+"name": "empty",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 8 ), ExtResource( 6 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 9 ) ],
+"loop": false,
+"name": "build",
+"speed": 0.5
+} ]
+
+[sub_resource type="Animation" id=6]
+resource_name = "building"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Ship:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7, 1.1, 1.7, 2.3, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 2 ), Vector2( -0.027, 2.105 ), Vector2( 0.064, 2.169 ), Vector2( 0.176, 2.24 ), Vector2( 0.111, 2.102 ), Vector2( -0.119, 2.045 ), Vector2( 0, 2 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Cranes:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.9, 2.3, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -9.12756 ), Vector2( 0, -7.577 ), Vector2( 0, -10.294 ), Vector2( 0, -9.12756 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "ready"
+length = 10.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Ship:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.0343334, 2.083 ), Vector2( -0.409, 3.453 ), Vector2( 0.124, 4.225 ), Vector2( -0.158, 5.824 ), Vector2( 0.192, 7.373 ), Vector2( 0.019, 9.061 ), Vector2( 1.018, 11.971 ), Vector2( -0.051, 13.598 ), Vector2( -0.218, 14.584 ), Vector2( -0.049, 15.891 ), Vector2( 0, 17.043 ) ]
+}
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
 "frames": [ ExtResource( 4 ), ExtResource( 2 ), ExtResource( 5 ), ExtResource( 1 ), ExtResource( 5 ), ExtResource( 2 ) ],
 "loop": true,
 "name": "building",
 "speed": 3.0
 } ]
 
-[node name="Shipyard" type="Node2D"]
+[node name="Shipyard" type="StaticBody2D"]
+script = ExtResource( 7 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.11097, -4.6084 )
+shape = SubResource( 4 )
+
+[node name="Sprite1" type="Sprite" parent="."]
+position = Vector2( 0, -10.1197 )
 texture = ExtResource( 3 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 1 )
-animation = "building"
+[node name="Ship" type="AnimatedSprite" parent="."]
+position = Vector2( -0.009, 2.035 )
+frames = SubResource( 5 )
+animation = "empty"
+frame = -1
 playing = true
+offset = Vector2( 0.315331, -7.25273 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/building = SubResource( 6 )
+anims/ready = SubResource( 7 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Cranes" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -8.95527 )
+frames = SubResource( 3 )
+animation = "building"

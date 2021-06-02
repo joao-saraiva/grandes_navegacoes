@@ -1954,6 +1954,20 @@ points = PoolVector2Array( 15, 9, 0, 9, 0, 0, 15, 0 )
 16/shape_one_way_margin = 0.0
 16/shapes = [  ]
 16/z_index = 0
+17/name = "Minifantasy_MapsLocations.png 17"
+17/texture = ExtResource( 6 )
+17/tex_offset = Vector2( 0, 0 )
+17/modulate = Color( 1, 1, 1, 1 )
+17/region = Rect2( 231, 232, 26, 17 )
+17/tile_mode = 0
+17/occluder_offset = Vector2( 0, 0 )
+17/navigation_offset = Vector2( 0, 0 )
+17/shape_offset = Vector2( 0, 0 )
+17/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+17/shape_one_way = false
+17/shape_one_way_margin = 0.0
+17/shapes = [  ]
+17/z_index = 0
 
 [sub_resource type="CircleShape2D" id=37]
 
@@ -1992,7 +2006,7 @@ scale = Vector2( 2, 2 )
 tile_set = SubResource( 36 )
 cell_size = Vector2( 1, 1 )
 format = 1
-tile_data = PoolIntArray( 8323073, 9, 0, 8323102, 9, 0, 10682433, 2, 0, 11141208, 7, 0, 11141220, 7, 0, 11141232, 7, 0, 11141244, 7, 0, 11796480, 14, 0, 12451886, 10, 0, 13697024, 14, 0, 15663104, 14, 0 )
+tile_data = PoolIntArray( 8323073, 9, 0, 8323102, 9, 0, 10682433, 2, 0, 11141208, 7, 0, 11141220, 7, 0, 11141232, 7, 0, 11141244, 7, 0, 11141256, 7, 0, 11141268, 7, 0, 11141280, 7, 0, 11141292, 7, 0, 11141304, 7, 0, 11141316, 7, 0, 11141328, 7, 0, 11141340, 7, 0, 11141352, 7, 0, 11141364, 7, 0, 11534411, 5, 0, 11796480, 14, 0, 11796555, 5, 0, 12451886, 10, 0, 12451915, 5, 0, 13107275, 5, 0, 13697024, 14, 0, 13828171, 5, 0, 14549057, 17, 0, 15073368, 7, 0, 15073380, 7, 0, 15073392, 7, 0, 15073404, 7, 0, 15073416, 7, 0, 15073428, 7, 0, 15073440, 7, 0, 15073452, 7, 0, 15073464, 7, 0, 15073476, 7, 0, 15073488, 7, 0, 15073500, 7, 0, 15073512, 7, 0, 15073524, 7, 0, 15663104, 14, 0 )
 
 [node name="YSort" type="YSort" parent="."]
 
@@ -2039,12 +2053,32 @@ scale = Vector2( 2, 2 )
 speed = 1
 
 [node name="KinematicBody2D26" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 1468.01, 515.974 )
+position = Vector2( 1487.99, 538.109 )
 scale = Vector2( 2, 2 )
 speed = 1
 
-[node name="Shipyard" parent="." instance=ExtResource( 8 )]
-position = Vector2( 205.997, 369.986 )
+[node name="Shipyard" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 206, 388.24 )
+scale = Vector2( 2, 2 )
+
+[node name="Shipyard2" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 322, 388.24 )
+scale = Vector2( 2, 2 )
+
+[node name="Shipyard3" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 442, 388.24 )
+scale = Vector2( 2, 2 )
+
+[node name="Shipyard4" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 206, 508.24 )
+scale = Vector2( 2, 2 )
+
+[node name="Shipyard5" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 322, 508.24 )
+scale = Vector2( 2, 2 )
+
+[node name="Shipyard6" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 442, 508.24 )
 scale = Vector2( 2, 2 )
 
 [node name="AnchoragePoint1" type="Area2D" parent="."]
@@ -2052,7 +2086,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnchoragePoint1"]
-position = Vector2( 201.802, 325.193 )
+position = Vector2( 219.736, 295.933 )
 shape = SubResource( 37 )
 
 [node name="AnchoragePoint2" type="Area2D" parent="."]
@@ -2060,7 +2094,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnchoragePoint2"]
-position = Vector2( 309.78, 429.305 )
+position = Vector2( 663.19, 545.736 )
 shape = SubResource( 38 )
 
 [node name="AnchoragePoint3" type="Area2D" parent="."]
@@ -2068,7 +2102,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnchoragePoint3"]
-position = Vector2( 203.601, 464.59 )
+position = Vector2( 403.399, 134.586 )
 shape = SubResource( 39 )
 
 [node name="AnchoragePoint4" type="Area2D" parent="."]
@@ -2108,7 +2142,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnchoragePoint8"]
-position = Vector2( 192.329, 553.397 )
+position = Vector2( 524.953, 271.715 )
 shape = SubResource( 39 )
 
 [node name="AnchoragePoint9" type="Area2D" parent="."]
