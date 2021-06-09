@@ -31,7 +31,7 @@ func buildShip(speed, resistance, size, navegation_technologies, fire_power, imp
 	var upgrade_sequence = ""
 	building = true
 	currentBoat = [speed, resistance, size, navegation_technologies, fire_power, improvement, boat]
-	#define a orderm da animação do ultimo upgrade visual
+	#define a ordem da animação do ultimo upgrade visual
 	if boat[0] < 3 and resistance >= 3 and boat[1] >= 3:
 		upgrade_sequence = "0"
 	elif boat[1] < 3 and fire_power >= 3 and boat[0] >= 3:
