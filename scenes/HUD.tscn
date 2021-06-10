@@ -1,9 +1,10 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://assets/BoOK.tres" type="Texture" id=1]
 [ext_resource path="res://assets/mapa.tres" type="Texture" id=2]
 [ext_resource path="res://scripts/HUD.gd" type="Script" id=3]
 [ext_resource path="res://assets/letter_background.jpg" type="Texture" id=4]
+[ext_resource path="res://scripts/Studdy_backgroun.gd" type="Script" id=5]
 [ext_resource path="res://assets/icons/bussola.png" type="Texture" id=6]
 [ext_resource path="res://assets/icons/map.png" type="Texture" id=7]
 [ext_resource path="res://assets/icons/astrolabio.png" type="Texture" id=8]
@@ -149,11 +150,13 @@ __meta__ = {
 position = Vector2( 554.28, 34.4989 )
 scale = Vector2( 2.47943, 1.87998 )
 texture = ExtResource( 17 )
+script = ExtResource( 5 )
 
 [node name="book" type="Sprite" parent="Holder"]
 position = Vector2( 1305.35, 724 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
+script = ExtResource( 5 )
 
 [node name="Label2" type="Label" parent="Holder"]
 margin_left = 603.112
@@ -170,11 +173,13 @@ __meta__ = {
 position = Vector2( 1312.11, 495.804 )
 scale = Vector2( 0.371118, 0.380945 )
 texture = ExtResource( 14 )
+script = ExtResource( 5 )
 
 [node name="Expedition_Sprite" type="Sprite" parent="Holder"]
 position = Vector2( 1308.26, 648 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
+script = ExtResource( 5 )
 
 [node name="Selector6" type="Sprite" parent="Holder"]
 visible = false
@@ -216,6 +221,7 @@ texture = ExtResource( 16 )
 position = Vector2( 1320.32, 585 )
 scale = Vector2( 2.34752, 2.68792 )
 texture = ExtResource( 13 )
+script = ExtResource( 5 )
 
 [node name="Estabelecimento_background" type="Control" parent="Holder"]
 visible = false
@@ -229,6 +235,7 @@ __meta__ = {
 position = Vector2( 698.15, 280.723 )
 scale = Vector2( 0.173832, 0.214816 )
 texture = ExtResource( 4 )
+script = ExtResource( 5 )
 
 [node name="Label1" type="Label" parent="Holder/Estabelecimento_background"]
 anchor_right = 0.403
