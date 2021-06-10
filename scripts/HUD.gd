@@ -14,6 +14,8 @@ func _ready():
 	pass 
 
 func _process(delta):
+	$Holder/Label2.text = str(GlobalVariables.totalShips)+"/20"	#linha de teste
+	$Holder/HBoxContainer/Label.text = str(GlobalVariables.coins)#linha de teste
 	if speed == 0:
 		$Holder/Arrow.visible = true
 		$Holder/Arrow2.visible = false

@@ -184,6 +184,7 @@ animations = [ {
 } ]
 
 [node name="Shipyard" type="StaticBody2D"]
+visible = false
 script = ExtResource( 7 )
 
 [node name="Sprite1" type="Sprite" parent="."]

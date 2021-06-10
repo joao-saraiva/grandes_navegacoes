@@ -12,7 +12,6 @@ var anchorage_areas = []
 var anchored_area = null
 var arriving = false
 var sailing = false
-var timer = false
 var repositioning = false
 
 func _ready():
