@@ -13,11 +13,31 @@ var mouse1 = false
 var mouse2 = false
 var mouse3 = false
 var mouse4 = false
+var onScreen = false
+var onMenu = false
 func _ready():
-
+	$Holder/Theme.play()
 	pass 
 
 func _process(delta):
+	
+	if Input.is_action_just_pressed("esc"):
+		if $Holder/Menu.visible == false:
+			
+			$Holder/Menu.visible = true
+			$Holder/Estaleiro_background.visible = false
+			$Holder/Expedition_background.visible = false
+			$Holder/Studdy_background.visible = false
+			$Holder/Mercadoria_background.visible = false
+			onScreen = false
+			onMenu = true
+			isNavigation = false
+			
+		else:
+			$Holder/Menu.visible = false
+			onMenu = false
+			isNavigation = true
+			
 	if speed == 0:
 		
 		$Holder/Arrow.visible = true
@@ -66,7 +86,7 @@ func _process(delta):
 		
 		if Input.is_action_just_pressed("ui_down"):
 			
-			if(menuselect == 5):
+			if(menuselect == 6):
 				
 				menuselect = 1
 				
@@ -78,7 +98,7 @@ func _process(delta):
 			
 			if(menuselect == 1):
 				
-				menuselect = 5
+				menuselect = 6
 				
 			else:
 				
@@ -91,6 +111,7 @@ func _process(delta):
 			$Holder/Selector3.visible = false
 			$Holder/Selector4.visible = false
 			$Holder/Selector5.visible = false
+			$Holder/Selector6.visible = false
 		if menuselect == 2:
 			
 			$Holder/Selector2.visible = true
@@ -98,6 +119,7 @@ func _process(delta):
 			$Holder/Selector3.visible = false
 			$Holder/Selector4.visible = false
 			$Holder/Selector5.visible = false
+			$Holder/Selector6.visible = false
 		if menuselect == 3:
 			
 			$Holder/Selector3.visible = true
@@ -105,6 +127,7 @@ func _process(delta):
 			$Holder/Selector2.visible = false
 			$Holder/Selector4.visible = false
 			$Holder/Selector5.visible = false
+			$Holder/Selector6.visible = false
 			
 		if menuselect == 4:
 			
@@ -113,9 +136,19 @@ func _process(delta):
 			$Holder/Selector2.visible = false
 			$Holder/Selector3.visible = false
 			$Holder/Selector5.visible = false
+			$Holder/Selector6.visible = false
 		pass
 		if menuselect == 5:
 			$Holder/Selector5.visible = true
+			$Holder/Selector1.visible = false
+			$Holder/Selector2.visible = false
+			$Holder/Selector3.visible = false
+			$Holder/Selector4.visible = false
+			$Holder/Selector6.visible = false
+		
+		if menuselect == 6:
+			$Holder/Selector6.visible = true
+			$Holder/Selector5.visible = false
 			$Holder/Selector1.visible = false
 			$Holder/Selector2.visible = false
 			$Holder/Selector3.visible = false
@@ -161,7 +194,7 @@ func _process(delta):
 				bussola = bussola +1
 				$Holder/Studdy_background/Comprado1.visible = true
 				$Holder/Studdy_background/Preco1 . visible = false
-				print("comprado")
+			
 			
 		if select == 2 and $Holder/Studdy_background.visible == true:
 			
@@ -174,7 +207,7 @@ func _process(delta):
 				mapa = mapa +1
 				$Holder/Studdy_background/Comprado2.visible = true
 				$Holder/Studdy_background/Preco2.visible = false
-				print("comprado")
+				
 			
 		if select == 3 and $Holder/Studdy_background.visible == true:
 			
@@ -187,7 +220,7 @@ func _process(delta):
 				astrolabio = astrolabio +1
 				$Holder/Studdy_background/Comprado3.visible = true
 				$Holder/Studdy_background/Preco3.visible = false
-				print("comprado")
+				
 				
 		if select == 4:
 			$Holder/Studdy_background/Selector3.visible = false
@@ -197,11 +230,12 @@ func _process(delta):
 			if Input.is_action_just_pressed("Enter"):
 				$Holder/Studdy_background.visible = false
 				isNavigation = true
+				onScreen = false
 				menuselect = 1
 				
 				
 				
-
+	
 	if $Holder/Expedition_background.visible == true:
 		
 			if Input.is_action_just_pressed("ui_down"):
@@ -250,30 +284,121 @@ func _process(delta):
 				$Holder/Expedition_background/Selector4.visible = true
 				
 				pass
+	if $Holder/Estaleiro_background.visible == true:
+			
+		if Input.is_action_just_pressed("ui_down"):
+				
+			if(select == 4):
+				
+				select = 1
+				
+			else :
+					select = select +1
+		if Input.is_action_just_pressed("ui_up"):
+				
+			if(select == 1):
+				
+				select = 4
+				
+			else:
+				select = select-1
+				
+		if select == 1:
+			
+			$Holder/Estaleiro_background/Selector1.visible = true
+			$Holder/Estaleiro_background/Selector2.visible = false
+			$Holder/Estaleiro_background/Selector3.visible = false
+			$Holder/Estaleiro_background/Selector4.visible = false
+			
+		if select == 2 :
+			$Holder/Estaleiro_background/Selector1.visible = false
+			$Holder/Estaleiro_background/Selector2.visible = true
+			$Holder/Estaleiro_background/Selector3.visible = false
+			$Holder/Estaleiro_background/Selector4.visible = false
+			
+		if select == 3:
+			
+			$Holder/Estaleiro_background/Selector1.visible = false
+			$Holder/Estaleiro_background/Selector2.visible = false
+			$Holder/Estaleiro_background/Selector3.visible = true
+			$Holder/Estaleiro_background/Selector4.visible = false
+			
+		if select == 4:
+			$Holder/Estaleiro_background/Selector1.visible = false
+			$Holder/Estaleiro_background/Selector2.visible = false
+			$Holder/Estaleiro_background/Selector3.visible = false
+			$Holder/Estaleiro_background/Selector4.visible = true
 
-
-
+	if $Holder/Estabelecimento_background.visible == true :
+		
+		if Input.is_action_just_pressed("ui_down"):
+				
+			if(select == 4):
+				
+				select = 1
+				
+			else :
+				select = select +1
+		if Input.is_action_just_pressed("ui_up"):
+				
+			if(select == 1):
+				
+				select = 4
+				
+			else:
+					
+				select = select-1
+					
+		if select == 1:
+			
+			$Holder/Estabelecimento_background/Selector1.visible = true
+			$Holder/Estabelecimento_background/Selector2.visible = false
+			$Holder/Estabelecimento_background/Selector3.visible = false
+			$Holder/Estabelecimento_background/Selector4.visible = false
+			
+		if select == 2:
+			
+			$Holder/Estabelecimento_background/Selector1.visible = false
+			$Holder/Estabelecimento_background/Selector2.visible = true
+			$Holder/Estabelecimento_background/Selector3.visible = false
+			$Holder/Estabelecimento_background/Selector4.visible = false
+			
+		if select == 3:
+			
+			$Holder/Estabelecimento_background/Selector1.visible = false
+			$Holder/Estabelecimento_background/Selector2.visible = false
+			$Holder/Estabelecimento_background/Selector3.visible = true
+			$Holder/Estabelecimento_background/Selector4.visible = false
+		
+		if select == 4:
+			
+			$Holder/Estabelecimento_background/Selector1.visible = false
+			$Holder/Estabelecimento_background/Selector2.visible = false
+			$Holder/Estabelecimento_background/Selector3.visible = false
+			$Holder/Estabelecimento_background/Selector4.visible = true
 func _on_StuddyButtom_pressed():
+	if onScreen == false and !onMenu:
 			$Holder/Studdy_background.visible = true
 			isNavigation = false
+			onScreen = true
 			select = 1
-		
-		
-		
-
-
-
 
 func _on_MercadoriaButton_pressed():
-	$Holder/Mercadoria_background.visible = true
-	isNavigation = false
+	if onScreen == false and !onMenu:
+		$Holder/Mercadoria_background.visible = true
+		isNavigation = false
+		onScreen = true
 	
 	pass # Replace with function body.
 
 
 func _on_GerenciamentoButton_pressed():
-	$Holder/Gerenciamento_background.visible = true
-	isNavigation = false
+	if onScreen == false and !onMenu:
+		
+		$Holder/Gerenciamento_background.visible = true
+		isNavigation = false
+		onScreen = true
+		
 	pass # Replace with function body.
 
 
@@ -312,9 +437,11 @@ func _on_Button4_mouse_entered():
 
 
 func _on_ExpeditionButtom_pressed():
-	$Holder/Expedition_background.visible = true
-	isNavigation = false
-	select = 1
+	if onScreen == false and !onMenu:
+		$Holder/Expedition_background.visible = true
+		isNavigation = false
+		onScreen = true
+		select = 1
 	pass # Replace with function body.
 
 
@@ -335,6 +462,7 @@ func _on_Button4_pressed():
 	if $Holder/Expedition_background.visible == true:
 		
 		isNavigation = true
+		onScreen = false
 		$Holder/Expedition_background.visible = false
 		
 	pass # Replace with function body.
@@ -344,20 +472,11 @@ func _on_MercadoriaButton_mouse_entered():
 	
 	if isNavigation:
 		
-		menuselect =2
+		menuselect =3
 	pass # Replace with function body.
 
 
 func _on_GerenciamentoButton_mouse_entered():
-	
-	if isNavigation:
-		
-		menuselect =3
-		
-	pass # Replace with function body.
-
-
-func _on_ExpeditionButtom_mouse_entered():
 	
 	if isNavigation:
 		
@@ -366,11 +485,20 @@ func _on_ExpeditionButtom_mouse_entered():
 	pass # Replace with function body.
 
 
+func _on_ExpeditionButtom_mouse_entered():
+	
+	if isNavigation:
+		
+		menuselect =5
+		
+	pass # Replace with function body.
+
+
 func _on_StuddyButtom_mouse_entered():
 		
 	if isNavigation:
 		
-		menuselect =5
+		menuselect = 6
 		
 	pass # Replace with function body.
 
@@ -388,5 +516,206 @@ func _on_TimeButton_pressed():
 
 func _on_EstaleiroButton_mouse_entered():
 	
+	menuselect = 2
+	pass # Replace with function body.
+
+
+func _on_NovoBarco_Button_mouse_entered():
+	
+	select = 1
+	
+	pass # Replace with function body.
+
+
+func _on_AprimorarBarco_button_mouse_entered():
+	
+	select =2
+	
+	pass # Replace with function body.
+
+
+func _on_Reparar_Barco_mouse_entered():
+	
+	select =3
+	
+	pass # Replace with function body.
+
+
+func _on_Sair_mouse_entered():
+	
+	select = 4
+	
+	pass # Replace with function body.
+
+
+func _on_EstaleiroButton_pressed():
+	
+	if onScreen == false and !onMenu:
+		
+		$Holder/Estaleiro_background.visible = true
+		isNavigation = false
+		onScreen = true
+		select = 1
+	
+	pass # Replace with function body.
+
+
+func _on_AutoSave_pressed():
+	
+	if $Holder/Menu/checkbox.visible == true:
+		
+		$Holder/Menu/checkbox.visible = false
+		$Holder/Menu/checkboxFull.visible = true
+		
+	elif $Holder/Menu/checkboxFull.visible == true:
+		
+		
+		$Holder/Menu/checkbox.visible = true
+		$Holder/Menu/checkboxFull.visible = false
+
+
+
+func _on_HSlider_value_changed(value):
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"),value)
+	pass # Replace with function body.
+
+
+func _on_Theme_finished():
+	$Holder/Theme.play()
+	pass # Replace with function body.
+
+
+func _on_EstabelecimentoButton_pressed():
+	if !onMenu and !onScreen:
+		
+		isNavigation = false
+		onScreen = true
+		$Holder/Estabelecimento_background.visible = true
+	
+	pass # Replace with function body.
+
+
+func _on_EstabelecimentoButton_mouse_entered():
 	menuselect = 1
+	print("entrou")
+	pass # Replace with function body.
+
+
+func _on_Sair_pressed():
+	
+	onScreen = false
+	$Holder/Estaleiro_background.visible = false
+	isNavigation = true
+	pass # Replace with function body.
+
+
+func _on_ButtonSairMercadoria_pressed():
+	
+	$Holder/Mercadoria_background.visible = false
+	isNavigation = true
+	onScreen = false
+	
+	pass # Replace with function body.
+
+
+func _on_BussolButton_mouse_entered():
+	select = 1
+	pass # Replace with function body.
+
+
+func _on_CartografiaButton_mouse_entered():
+	select = 2
+	pass # Replace with function body.
+
+
+func _on_AstrolabioButton_mouse_entered():
+	select =3 
+	pass # Replace with function body.
+
+
+func _on_Sairbutton_mouse_entered():
+	select = 4
+	pass # Replace with function body.
+
+
+func _on_BussolButton_pressed():
+	$Holder/Studdy_background/Preco1.visible = false
+	$Holder/Studdy_background/Comprado1.visible = true
+	pass # Replace with function body.
+
+
+func _on_CartografiaButton_pressed():
+	$Holder/Studdy_background/Preco2.visible = false
+	$Holder/Studdy_background/Comprado2.visible = true
+	pass # Replace with function body.
+
+
+func _on_AstrolabioButton_pressed():
+	$Holder/Studdy_background/Preco3.visible = false
+	$Holder/Studdy_background/Comprado3.visible = true
+	pass # Replace with function body.
+
+
+func _on_Sairbutton_pressed():
+	$Holder/Studdy_background.visible = false
+	onScreen = false
+	isNavigation = true
+	pass # Replace with function body.
+
+
+func _on_Button_pressed():
+	
+	if $Holder/Gerenciamento_background.visible == true:
+		print("oi")
+		onScreen = false
+		isNavigation = true
+		$Holder/Gerenciamento_background.visible = false
+		
+	pass # Replace with function body.
+
+
+func _on_RefinariaButton_pressed():
+	pass # Replace with function body.
+
+
+func _on_CanhoesButton_pressed():
+	
+	pass # Replace with function body.
+
+
+func _on_SairButton_pressed():
+	onScreen = false
+	isNavigation = true
+	$Holder/Estabelecimento_background.visible = false
+	pass # Replace with function body.
+
+
+func _on_Estaleiro2Button_pressed():
+	pass # Replace with function body.
+
+
+func _on_RefinariaButton_mouse_entered():
+	
+	select = 1
+	
+	pass # Replace with function body.
+
+
+func _on_CanhoesButton_mouse_entered():
+	
+	select = 3
+	
+	pass # Replace with function body.
+
+
+func _on_Estaleiro2Button_mouse_entered():
+	
+	select = 2
+	
+	pass # Replace with function body.
+
+
+func _on_SairButton_mouse_entered():
+	
+	select = 4
 	pass # Replace with function body.

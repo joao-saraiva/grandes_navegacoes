@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://assets/BoOK.tres" type="Texture" id=1]
 [ext_resource path="res://assets/mapa.tres" type="Texture" id=2]
@@ -23,15 +23,10 @@
 [ext_resource path="res://assets/carta.tres" type="Texture" id=21]
 [ext_resource path="res://assets/Establishments/shipyard1.png" type="Texture" id=22]
 [ext_resource path="res://assets/Establishments/shipyard2[1].png" type="Texture" id=23]
-
-[sub_resource type="DynamicFontData" id=1]
-font_path = "res://assets/FONTE.ttf"
-
-[sub_resource type="DynamicFont" id=2]
-size = 17
-outline_size = 1
-outline_color = Color( 0, 0, 0, 1 )
-font_data = SubResource( 1 )
+[ext_resource path="res://assets/checkBox/checkbox.png" type="Texture" id=24]
+[ext_resource path="res://assets/checkBox/checkboxFull.png" type="Texture" id=25]
+[ext_resource path="res://assets/musicas/music1.wav" type="AudioStream" id=26]
+[ext_resource path="res://assets/Establishments/new_estabelecimento(0).tres" type="Texture" id=27]
 
 [sub_resource type="DynamicFontData" id=3]
 font_path = "res://assets/FONTE.ttf"
@@ -41,6 +36,15 @@ size = 17
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 font_data = SubResource( 3 )
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://assets/FONTE.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 17
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 1 )
 
 [sub_resource type="SpriteFrames" id=5]
 animations = [ {
@@ -60,15 +64,101 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Menu" type="Control" parent="Holder"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Studdy_backgroun3" type="Sprite" parent="Holder/Menu"]
+position = Vector2( 698.15, 280.723 )
+scale = Vector2( 0.173832, 0.214816 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+
+[node name="checkboxFull" type="Sprite" parent="Holder/Menu"]
+visible = false
+position = Vector2( 683.148, 262.475 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 25 )
+
+[node name="checkbox" type="Sprite" parent="Holder/Menu"]
+position = Vector2( 683.148, 262.475 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 24 )
+
+[node name="Label1" type="Label" parent="Holder/Menu"]
+anchor_right = 0.403
+anchor_bottom = 0.309
+margin_left = 553.0
+margin_top = 204.0
+margin_right = 637.88
+margin_bottom = 212.64
+custom_fonts/font = SubResource( 4 )
+text = "VOLUME"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Holder/Menu"]
+anchor_right = 0.403
+anchor_bottom = 0.309
+margin_left = 553.0
+margin_top = 253.0
+margin_right = 637.88
+margin_bottom = 261.64
+custom_fonts/font = SubResource( 4 )
+text = "AUTO SAVE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="Holder/Menu"]
+anchor_right = 0.403
+anchor_bottom = 0.309
+margin_left = 553.0
+margin_top = 350.0
+margin_right = 637.88
+margin_bottom = 358.64
+custom_fonts/font = SubResource( 4 )
+text = "SAIR"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AutoSave" type="Button" parent="Holder/Menu"]
+margin_left = 671.0
+margin_top = 251.0
+margin_right = 695.0
+margin_bottom = 274.0
+focus_mode = 0
+enabled_focus_mode = 0
+flat = true
+
+[node name="HSlider" type="HSlider" parent="Holder/Menu"]
+margin_left = 671.0
+margin_top = 204.0
+margin_right = 774.0
+margin_bottom = 220.0
+min_value = -80.0
+max_value = 0.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Ship" type="Sprite" parent="Holder"]
 position = Vector2( 554.28, 34.4989 )
 scale = Vector2( 2.47943, 1.87998 )
 texture = ExtResource( 17 )
+script = ExtResource( 5 )
 
 [node name="book" type="Sprite" parent="Holder"]
-position = Vector2( 1240.67, 668.157 )
+position = Vector2( 1305.35, 724 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
+script = ExtResource( 5 )
 
 [node name="Label2" type="Label" parent="Holder"]
 margin_left = 603.112
@@ -76,59 +166,423 @@ margin_top = 21.0
 margin_right = 643.112
 margin_bottom = 42.0
 custom_fonts/font = SubResource( 2 )
-text = "0/20"
+text = "0/24"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Selector4" type="Sprite" parent="Holder"]
+[node name="Mercadoria" type="Sprite" parent="Holder"]
+position = Vector2( 1312.11, 495.804 )
+scale = Vector2( 0.371118, 0.380945 )
+texture = ExtResource( 14 )
+script = ExtResource( 5 )
+
+[node name="Expedition_Sprite" type="Sprite" parent="Holder"]
+position = Vector2( 1308.26, 648 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+script = ExtResource( 5 )
+
+[node name="Selector6" type="Sprite" parent="Holder"]
 visible = false
-position = Vector2( 1153.44, 595 )
+position = Vector2( 1218, 723.939 )
 scale = Vector2( 3.63324, 3.1071 )
 texture = ExtResource( 16 )
 
 [node name="Selector5" type="Sprite" parent="Holder"]
 visible = false
-position = Vector2( 1153.44, 680 )
+position = Vector2( 1214.39, 645 )
 scale = Vector2( 3.63324, 3.1071 )
 texture = ExtResource( 16 )
 
-[node name="Mercadoria" type="Sprite" parent="Holder"]
-position = Vector2( 1248.57, 434.994 )
-scale = Vector2( 0.371118, 0.380945 )
-texture = ExtResource( 14 )
-
-[node name="Expedition_Sprite" type="Sprite" parent="Holder"]
-position = Vector2( 1243.08, 585.919 )
-scale = Vector2( 2, 2 )
-texture = ExtResource( 2 )
+[node name="Selector4" type="Sprite" parent="Holder"]
+visible = false
+position = Vector2( 1214.39, 576.793 )
+scale = Vector2( 3.63324, 3.1071 )
+texture = ExtResource( 16 )
 
 [node name="Selector3" type="Sprite" parent="Holder"]
 visible = false
-position = Vector2( 1151.66, 516 )
+position = Vector2( 1214.39, 495 )
 scale = Vector2( 3.63324, 3.1071 )
 texture = ExtResource( 16 )
 
 [node name="Selector2" type="Sprite" parent="Holder"]
 visible = false
-position = Vector2( 1151.66, 436 )
+position = Vector2( 1218, 431 )
 scale = Vector2( 3.63324, 3.1071 )
 texture = ExtResource( 16 )
 
 [node name="Selector1" type="Sprite" parent="Holder"]
 visible = false
-position = Vector2( 1150.6, 345 )
+position = Vector2( 1218, 368.758 )
 scale = Vector2( 3.63324, 3.1071 )
 texture = ExtResource( 16 )
 
 [node name="Gerenciamento" type="Sprite" parent="Holder"]
-position = Vector2( 1258.96, 516.818 )
+position = Vector2( 1320.32, 585 )
 scale = Vector2( 2.34752, 2.68792 )
 texture = ExtResource( 13 )
+script = ExtResource( 5 )
 
-[node name="Estaleiro_background" type="Control" parent="Holder"]
+[node name="Estabelecimento_background" type="Control" parent="Holder"]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Studdy_backgroun2" type="Sprite" parent="Holder/Estabelecimento_background"]
+position = Vector2( 698.15, 280.723 )
+scale = Vector2( 0.173832, 0.214816 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+
+[node name="Label1" type="Label" parent="Holder/Estabelecimento_background"]
+anchor_right = 0.403
+anchor_bottom = 0.309
+margin_left = 553.209
+margin_top = 204.261
+margin_right = 638.089
+margin_bottom = 212.901
+custom_fonts/font = SubResource( 4 )
+text = "REFINARIA"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Holder/Estabelecimento_background"]
+anchor_right = 0.403
+anchor_bottom = 0.309
+margin_left = 553.209
+margin_top = 248.261
+margin_right = 638.089
+margin_bottom = 256.901
+custom_fonts/font = SubResource( 4 )
+text = "ESTALEIRO"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="Holder/Estabelecimento_background"]
+anchor_right = 0.403
+anchor_bottom = 0.309
+margin_left = 553.209
+margin_top = 293.261
+margin_right = 638.089
+margin_bottom = 301.901
+custom_fonts/font = SubResource( 4 )
+text = "CANHÕES"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="Holder/Estabelecimento_background"]
+anchor_right = 0.403
+anchor_bottom = 0.309
+margin_left = 553.0
+margin_top = 366.0
+margin_right = 637.88
+margin_bottom = 398.64
+custom_fonts/font = SubResource( 4 )
+text = "SAIR
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Total1" type="Label" parent="Holder/Estabelecimento_background"]
+anchor_right = 0.403
+anchor_bottom = 0.309
+margin_left = 663.0
+margin_top = 204.0
+margin_right = 669.88
+margin_bottom = 212.64
+custom_fonts/font = SubResource( 4 )
+text = "0/1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Total2" type="Label" parent="Holder/Estabelecimento_background"]
+anchor_right = 0.403
+anchor_bottom = 0.309
+margin_left = 663.0
+margin_top = 248.261
+margin_right = 669.88
+margin_bottom = 256.901
+custom_fonts/font = SubResource( 4 )
+text = "0/5"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Total3" type="Label" parent="Holder/Estabelecimento_background"]
+anchor_right = 0.403
+anchor_bottom = 0.309
+margin_left = 663.0
+margin_top = 293.261
+margin_right = 671.88
+margin_bottom = 301.901
+custom_fonts/font = SubResource( 4 )
+text = "0/10"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Selector1" type="Label" parent="Holder/Estabelecimento_background"]
+margin_left = 533.272
+margin_top = 204.261
+margin_right = 539.272
+margin_bottom = 225.261
+custom_fonts/font = SubResource( 4 )
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Selector2" type="Label" parent="Holder/Estabelecimento_background"]
+visible = false
+margin_left = 533.272
+margin_top = 248.261
+margin_right = 539.272
+margin_bottom = 269.261
+custom_fonts/font = SubResource( 4 )
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Selector3" type="Label" parent="Holder/Estabelecimento_background"]
+visible = false
+margin_left = 533.272
+margin_top = 293.261
+margin_right = 539.272
+margin_bottom = 314.261
+custom_fonts/font = SubResource( 4 )
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Selector4" type="Label" parent="Holder/Estabelecimento_background"]
+visible = false
+margin_left = 533.0
+margin_top = 366.0
+margin_right = 539.0
+margin_bottom = 387.0
+custom_fonts/font = SubResource( 4 )
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RefinariaButton" type="Button" parent="Holder/Estabelecimento_background"]
+margin_left = 533.0
+margin_top = 204.0
+margin_right = 688.0
+margin_bottom = 224.0
+focus_mode = 0
+enabled_focus_mode = 0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Estaleiro2Button" type="Button" parent="Holder/Estabelecimento_background"]
+margin_left = 533.0
+margin_top = 247.0
+margin_right = 688.0
+margin_bottom = 267.0
+focus_mode = 0
+enabled_focus_mode = 0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanhoesButton" type="Button" parent="Holder/Estabelecimento_background"]
+margin_left = 533.0
+margin_top = 293.0
+margin_right = 699.0
+margin_bottom = 313.0
+focus_mode = 0
+enabled_focus_mode = 0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SairButton" type="Button" parent="Holder/Estabelecimento_background"]
+margin_left = 533.0
+margin_top = 366.0
+margin_right = 596.0
+margin_bottom = 386.0
+focus_mode = 0
+enabled_focus_mode = 0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Estaleiro_background" type="Control" parent="Holder"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Studdy_backgroun3" type="Sprite" parent="Holder/Estaleiro_background"]
+position = Vector2( 698.15, 280.723 )
+scale = Vector2( 0.173832, 0.214816 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+
+[node name="Label1" type="Label" parent="Holder/Estaleiro_background"]
+anchor_right = 0.403
+anchor_bottom = 0.309
+margin_left = 553.209
+margin_top = 204.261
+margin_right = 638.089
+margin_bottom = 212.901
+custom_fonts/font = SubResource( 4 )
+text = "NOVO BARCO"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Holder/Estaleiro_background"]
+anchor_right = 0.403
+anchor_bottom = 0.309
+margin_left = 553.209
+margin_top = 250.261
+margin_right = 638.089
+margin_bottom = 258.901
+custom_fonts/font = SubResource( 4 )
+text = "APRIMORAR BARCO"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="Holder/Estaleiro_background"]
+anchor_right = 0.403
+anchor_bottom = 0.309
+margin_left = 553.209
+margin_top = 301.261
+margin_right = 683.089
+margin_bottom = 309.901
+custom_fonts/font = SubResource( 4 )
+text = "REPARAR BARCO"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="Holder/Estaleiro_background"]
+anchor_right = 0.403
+anchor_bottom = 0.309
+margin_left = 553.209
+margin_top = 351.261
+margin_right = 683.089
+margin_bottom = 359.901
+custom_fonts/font = SubResource( 4 )
+text = "SAIR"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Selector1" type="Label" parent="Holder/Estaleiro_background"]
+margin_left = 533.272
+margin_top = 204.261
+margin_right = 539.272
+margin_bottom = 225.261
+custom_fonts/font = SubResource( 4 )
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Selector2" type="Label" parent="Holder/Estaleiro_background"]
+visible = false
+margin_left = 533.0
+margin_top = 249.0
+margin_right = 539.0
+margin_bottom = 270.0
+custom_fonts/font = SubResource( 4 )
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Selector3" type="Label" parent="Holder/Estaleiro_background"]
+visible = false
+margin_left = 531.272
+margin_top = 301.261
+margin_right = 537.272
+margin_bottom = 322.261
+custom_fonts/font = SubResource( 4 )
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Selector4" type="Label" parent="Holder/Estaleiro_background"]
+visible = false
+margin_left = 531.271
+margin_top = 347.758
+margin_right = 537.271
+margin_bottom = 368.758
+custom_fonts/font = SubResource( 4 )
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NovoBarco_Button" type="Button" parent="Holder/Estaleiro_background"]
+margin_left = 533.0
+margin_top = 204.0
+margin_right = 652.0
+margin_bottom = 224.0
+focus_mode = 0
+enabled_focus_mode = 0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AprimorarBarco_button" type="Button" parent="Holder/Estaleiro_background"]
+margin_left = 533.0
+margin_top = 250.0
+margin_right = 699.0
+margin_bottom = 270.0
+focus_mode = 0
+enabled_focus_mode = 0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Reparar_Barco" type="Button" parent="Holder/Estaleiro_background"]
+margin_left = 533.0
+margin_top = 302.0
+margin_right = 686.0
+margin_bottom = 322.0
+focus_mode = 0
+enabled_focus_mode = 0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sair" type="Button" parent="Holder/Estaleiro_background"]
+margin_left = 533.0
+margin_top = 351.0
+margin_right = 596.0
+margin_bottom = 371.0
+focus_mode = 0
+enabled_focus_mode = 0
+flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -141,7 +595,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Studdy_backgroun2" type="Sprite" parent="Holder/Expedition_background"]
+[node name="Studdy_backgroun3" type="Sprite" parent="Holder/Expedition_background"]
 position = Vector2( 698.15, 280.723 )
 scale = Vector2( 0.173832, 0.214816 )
 texture = ExtResource( 4 )
@@ -513,6 +967,54 @@ position = Vector2( 831.302, 204.261 )
 scale = Vector2( 0.223602, 0.19864 )
 texture = ExtResource( 6 )
 
+[node name="BussolButton" type="Button" parent="Holder/Studdy_background"]
+margin_left = 553.0
+margin_top = 204.0
+margin_right = 741.0
+margin_bottom = 224.0
+focus_mode = 0
+enabled_focus_mode = 0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CartografiaButton" type="Button" parent="Holder/Studdy_background"]
+margin_left = 553.0
+margin_top = 270.0
+margin_right = 741.0
+margin_bottom = 290.0
+focus_mode = 0
+enabled_focus_mode = 0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AstrolabioButton" type="Button" parent="Holder/Studdy_background"]
+margin_left = 553.0
+margin_top = 328.0
+margin_right = 741.0
+margin_bottom = 348.0
+focus_mode = 0
+enabled_focus_mode = 0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sairbutton" type="Button" parent="Holder/Studdy_background"]
+margin_left = 543.0
+margin_top = 370.0
+margin_right = 596.0
+margin_bottom = 390.0
+focus_mode = 0
+enabled_focus_mode = 0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Gerenciamento_background" type="Control" parent="Holder"]
 visible = false
 margin_right = 40.0
@@ -774,11 +1276,69 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ButtonSairMercadoria" type="Button" parent="Holder/Mercadoria_background"]
+margin_left = 533.0
+margin_top = 555.0
+margin_right = 578.0
+margin_bottom = 575.0
+focus_mode = 0
+enabled_focus_mode = 0
+keep_pressed_outside = true
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="Holder"]
+anchor_left = -0.027027
+anchor_top = -0.00149477
+anchor_right = -0.027027
+anchor_bottom = -0.00149477
+margin_left = 540.081
+margin_top = 709.06
+margin_right = 623.081
+margin_bottom = 731.06
+focus_mode = 0
+enabled_focus_mode = 0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EstabelecimentoButton" type="Button" parent="Holder"]
+margin_left = 1276.0
+margin_top = 327.0
+margin_right = 1350.0
+margin_bottom = 384.0
+focus_mode = 0
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Estabelecimenti" type="Sprite" parent="Holder"]
+position = Vector2( 1312.88, 350.879 )
+scale = Vector2( 2.54355, 4.02017 )
+texture = ExtResource( 27 )
+script = ExtResource( 5 )
+
+[node name="EstaleiroButton" type="Button" parent="Holder"]
+margin_left = 1276.0
+margin_top = 397.0
+margin_right = 1345.0
+margin_bottom = 447.0
+focus_mode = 0
+enabled_focus_mode = 0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="MercadoriaButton" type="Button" parent="Holder"]
-margin_left = 1218.0
-margin_top = 404.0
-margin_right = 1279.0
-margin_bottom = 465.0
+margin_left = 1281.49
+margin_top = 465.0
+margin_right = 1342.49
+margin_bottom = 526.0
 focus_mode = 0
 enabled_focus_mode = 0
 flat = true
@@ -787,10 +1347,10 @@ __meta__ = {
 }
 
 [node name="GerenciamentoButton" type="Button" parent="Holder"]
-margin_left = 1213.0
-margin_top = 478.0
-margin_right = 1279.0
-margin_bottom = 534.0
+margin_left = 1276.0
+margin_top = 546.0
+margin_right = 1345.0
+margin_bottom = 606.0
 focus_mode = 0
 enabled_focus_mode = 0
 flat = true
@@ -799,10 +1359,10 @@ __meta__ = {
 }
 
 [node name="ExpeditionButtom" type="Button" parent="Holder"]
-margin_left = 1207.0
-margin_top = 555.0
-margin_right = 1276.0
-margin_bottom = 618.0
+margin_left = 1275.51
+margin_top = 616.0
+margin_right = 1344.51
+margin_bottom = 679.0
 focus_mode = 0
 enabled_focus_mode = 0
 flat = true
@@ -811,10 +1371,10 @@ __meta__ = {
 }
 
 [node name="StuddyButtom" type="Button" parent="Holder"]
-margin_left = 1207.0
-margin_top = 640.0
-margin_right = 1277.0
-margin_bottom = 701.0
+margin_left = 1272.26
+margin_top = 694.0
+margin_right = 1342.26
+margin_bottom = 755.0
 focus_mode = 0
 enabled_focus_mode = 0
 flat = true
@@ -869,14 +1429,15 @@ scale = Vector2( 10.0204, 4.88177 )
 texture = ExtResource( 18 )
 
 [node name="Carta" type="Sprite" parent="Holder"]
-position = Vector2( 1244.95, 40 )
+position = Vector2( 1308.52, 40 )
 scale = Vector2( 3.21734, 2.91836 )
 texture = ExtResource( 21 )
+script = ExtResource( 5 )
 
 [node name="CartaButton" type="Button" parent="Holder"]
-margin_left = 1218.0
+margin_left = 1281.49
 margin_top = 21.0
-margin_right = 1272.0
+margin_right = 1335.49
 margin_bottom = 59.0
 focus_mode = 0
 enabled_focus_mode = 0
@@ -895,26 +1456,34 @@ enabled_focus_mode = 0
 flat = true
 
 [node name="ShipYard" type="Sprite" parent="Holder"]
-position = Vector2( 1249.01, 333.373 )
-scale = Vector2( 1.09261, 1.71338 )
+position = Vector2( 1312.88, 415.804 )
+scale = Vector2( 1.3172, 1.71338 )
 texture = ExtResource( 22 )
+script = ExtResource( 5 )
 
 [node name="Sprite2" type="Sprite" parent="Holder"]
-position = Vector2( 1249.39, 339.607 )
+position = Vector2( 1312.39, 431 )
 scale = Vector2( 1, 1.24857 )
 texture = ExtResource( 23 )
+script = ExtResource( 5 )
 
-[node name="EstaleiroButton" type="Button" parent="Holder"]
-margin_left = 1218.0
-margin_top = 311.0
-margin_right = 1280.0
-margin_bottom = 361.0
-focus_mode = 0
-enabled_focus_mode = 0
-flat = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Theme" type="AudioStreamPlayer" parent="Holder"]
+stream = ExtResource( 26 )
+[connection signal="pressed" from="Holder/Menu/AutoSave" to="." method="_on_AutoSave_pressed"]
+[connection signal="value_changed" from="Holder/Menu/HSlider" to="." method="_on_HSlider_value_changed"]
+[connection signal="mouse_entered" from="Holder/Estabelecimento_background/RefinariaButton" to="." method="_on_RefinariaButton_mouse_entered"]
+[connection signal="pressed" from="Holder/Estabelecimento_background/RefinariaButton" to="." method="_on_RefinariaButton_pressed"]
+[connection signal="mouse_entered" from="Holder/Estabelecimento_background/Estaleiro2Button" to="." method="_on_Estaleiro2Button_mouse_entered"]
+[connection signal="pressed" from="Holder/Estabelecimento_background/Estaleiro2Button" to="." method="_on_Estaleiro2Button_pressed"]
+[connection signal="mouse_entered" from="Holder/Estabelecimento_background/CanhoesButton" to="." method="_on_CanhoesButton_mouse_entered"]
+[connection signal="pressed" from="Holder/Estabelecimento_background/CanhoesButton" to="." method="_on_CanhoesButton_pressed"]
+[connection signal="mouse_entered" from="Holder/Estabelecimento_background/SairButton" to="." method="_on_SairButton_mouse_entered"]
+[connection signal="pressed" from="Holder/Estabelecimento_background/SairButton" to="." method="_on_SairButton_pressed"]
+[connection signal="mouse_entered" from="Holder/Estaleiro_background/NovoBarco_Button" to="." method="_on_NovoBarco_Button_mouse_entered"]
+[connection signal="mouse_entered" from="Holder/Estaleiro_background/AprimorarBarco_button" to="." method="_on_AprimorarBarco_button_mouse_entered"]
+[connection signal="mouse_entered" from="Holder/Estaleiro_background/Reparar_Barco" to="." method="_on_Reparar_Barco_mouse_entered"]
+[connection signal="mouse_entered" from="Holder/Estaleiro_background/Sair" to="." method="_on_Sair_mouse_entered"]
+[connection signal="pressed" from="Holder/Estaleiro_background/Sair" to="." method="_on_Sair_pressed"]
 [connection signal="mouse_entered" from="Holder/Expedition_background/Button1" to="." method="_on_Button1_mouse_entered"]
 [connection signal="pressed" from="Holder/Expedition_background/Button1" to="." method="_on_Button1_pressed"]
 [connection signal="mouse_entered" from="Holder/Expedition_background/Button2" to="." method="_on_Button2_mouse_entered"]
@@ -923,6 +1492,20 @@ __meta__ = {
 [connection signal="pressed" from="Holder/Expedition_background/Button3" to="." method="_on_Button3_pressed"]
 [connection signal="mouse_entered" from="Holder/Expedition_background/Button4" to="." method="_on_Button4_mouse_entered"]
 [connection signal="pressed" from="Holder/Expedition_background/Button4" to="." method="_on_Button4_pressed"]
+[connection signal="mouse_entered" from="Holder/Studdy_background/BussolButton" to="." method="_on_BussolButton_mouse_entered"]
+[connection signal="pressed" from="Holder/Studdy_background/BussolButton" to="." method="_on_BussolButton_pressed"]
+[connection signal="mouse_entered" from="Holder/Studdy_background/CartografiaButton" to="." method="_on_CartografiaButton_mouse_entered"]
+[connection signal="pressed" from="Holder/Studdy_background/CartografiaButton" to="." method="_on_CartografiaButton_pressed"]
+[connection signal="mouse_entered" from="Holder/Studdy_background/AstrolabioButton" to="." method="_on_AstrolabioButton_mouse_entered"]
+[connection signal="pressed" from="Holder/Studdy_background/AstrolabioButton" to="." method="_on_AstrolabioButton_pressed"]
+[connection signal="mouse_entered" from="Holder/Studdy_background/Sairbutton" to="." method="_on_Sairbutton_mouse_entered"]
+[connection signal="pressed" from="Holder/Studdy_background/Sairbutton" to="." method="_on_Sairbutton_pressed"]
+[connection signal="pressed" from="Holder/Mercadoria_background/ButtonSairMercadoria" to="." method="_on_ButtonSairMercadoria_pressed"]
+[connection signal="pressed" from="Holder/Button" to="." method="_on_Button_pressed"]
+[connection signal="mouse_entered" from="Holder/EstabelecimentoButton" to="." method="_on_EstabelecimentoButton_mouse_entered"]
+[connection signal="pressed" from="Holder/EstabelecimentoButton" to="." method="_on_EstabelecimentoButton_pressed"]
+[connection signal="mouse_entered" from="Holder/EstaleiroButton" to="." method="_on_EstaleiroButton_mouse_entered"]
+[connection signal="pressed" from="Holder/EstaleiroButton" to="." method="_on_EstaleiroButton_pressed"]
 [connection signal="mouse_entered" from="Holder/MercadoriaButton" to="." method="_on_MercadoriaButton_mouse_entered"]
 [connection signal="pressed" from="Holder/MercadoriaButton" to="." method="_on_MercadoriaButton_pressed"]
 [connection signal="mouse_entered" from="Holder/GerenciamentoButton" to="." method="_on_GerenciamentoButton_mouse_entered"]
@@ -932,4 +1515,4 @@ __meta__ = {
 [connection signal="mouse_entered" from="Holder/StuddyButtom" to="." method="_on_StuddyButtom_mouse_entered"]
 [connection signal="pressed" from="Holder/StuddyButtom" to="." method="_on_StuddyButtom_pressed"]
 [connection signal="pressed" from="Holder/TimeButton" to="." method="_on_TimeButton_pressed"]
-[connection signal="mouse_entered" from="Holder/EstaleiroButton" to="." method="_on_EstaleiroButton_mouse_entered"]
+[connection signal="finished" from="Holder/Theme" to="." method="_on_Theme_finished"]
