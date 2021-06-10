@@ -1,6 +1,5 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
-[ext_resource path="res://scenes/Ship.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/Minifantasy_MapsRiver.png" type="Texture" id=2]
 [ext_resource path="res://assets/Minifantasy_MapsMountains.png" type="Texture" id=3]
 [ext_resource path="res://assets/Minifantasy_MapsForest.png" type="Texture" id=4]
@@ -8,6 +7,9 @@
 [ext_resource path="res://assets/Minifantasy_MapsLocations.png" type="Texture" id=6]
 [ext_resource path="res://assets/Minifantasy_MapsRoads.png" type="Texture" id=7]
 [ext_resource path="res://scenes/Shipyard.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scripts/GameScene.gd" type="Script" id=10]
+[ext_resource path="res://scripts/YSort.gd" type="Script" id=11]
 
 [sub_resource type="TileSet" id=1]
 0/name = "01"
@@ -1680,6 +1682,9 @@ radius = 8.80761
 radius = 8.52229
 
 [node name="Ceuta" type="Node2D"]
+script = ExtResource( 10 )
+
+[node name="HUD" parent="." instance=ExtResource( 9 )]
 
 [node name="Sea" type="TileMap" parent="."]
 scale = Vector2( 2, 2 )
@@ -1713,100 +1718,31 @@ format = 1
 tile_data = PoolIntArray( 8323073, 9, 0, 8323102, 9, 0, 10682433, 2, 0, 11141208, 7, 0, 11141220, 7, 0, 11141232, 7, 0, 11141244, 7, 0, 11141256, 7, 0, 11141268, 7, 0, 11141280, 7, 0, 11141292, 7, 0, 11141304, 7, 0, 11141316, 7, 0, 11141328, 7, 0, 11141340, 7, 0, 11141352, 7, 0, 11141364, 7, 0, 11534411, 5, 0, 11796480, 14, 0, 11796555, 5, 0, 12451886, 10, 0, 12451915, 5, 0, 13107275, 5, 0, 13697024, 14, 0, 13828171, 5, 0, 14549057, 17, 0, 15073368, 7, 0, 15073380, 7, 0, 15073392, 7, 0, 15073404, 7, 0, 15073416, 7, 0, 15073428, 7, 0, 15073440, 7, 0, 15073452, 7, 0, 15073464, 7, 0, 15073476, 7, 0, 15073488, 7, 0, 15073500, 7, 0, 15073512, 7, 0, 15073524, 7, 0, 15663104, 14, 0 )
 
 [node name="YSort" type="YSort" parent="."]
+script = ExtResource( 11 )
 
-[node name="KinematicBody2D21" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 867.403, 328.42 )
-speed = 3
-resistance = 2
-size = 3
-fire_power = 3
-
-[node name="KinematicBody2D25" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 819.12, 27.1057 )
-speed = 4
-size = 1
-fire_power = 3
-
-[node name="KinematicBody2D24" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 732.856, 605.916 )
-speed = 3
-resistance = 3
-size = 1
-fire_power = 3
-
-[node name="KinematicBody2D31" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 712.674, 209.013 )
-speed = 3
-resistance = 3
-size = 1
-fire_power = 3
-
-[node name="KinematicBody2D30" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 893.408, 71.3743 )
-speed = 3
-
-[node name="KinematicBody2D22" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 805.213, 477.52 )
-
-[node name="KinematicBody2D28" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 397.197, 24.9861 )
-speed = 4
-
-[node name="KinematicBody2D29" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 1268.36, 516.07 )
-
-[node name="KinematicBody2D23" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 1112.6, 693.685 )
-size = 1
-
-[node name="KinematicBody2D26" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 1116.16, 584.44 )
-speed = 1
-
-[node name="Shipyard" parent="YSort" instance=ExtResource( 8 )]
+[node name="Shipyard1" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 206, 388.24 )
 scale = Vector2( 2, 2 )
 
 [node name="Shipyard2" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 322, 388.24 )
 scale = Vector2( 2, 2 )
-speed = 2
-resistance = 2
-size = 2
-navegation_technologies = 2
-fire_power = 2
 
 [node name="Shipyard3" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 442, 388.24 )
 scale = Vector2( 2, 2 )
-speed = 3
-resistance = 3
-size = 3
-navegation_technologies = 3
-fire_power = 3
 
 [node name="Shipyard4" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 206, 508.24 )
 scale = Vector2( 2, 2 )
-speed = 2
-resistance = 4
-size = 3
-navegation_technologies = 4
-fire_power = 4
 
 [node name="Shipyard5" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 322, 508.24 )
 scale = Vector2( 2, 2 )
-speed = 3
-resistance = 5
-size = 3
-navegation_technologies = 5
-fire_power = 5
 
 [node name="Shipyard6" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 442, 508.24 )
 scale = Vector2( 2, 2 )
-speed = 4
 
 [node name="AnchoragePoint1" type="Area2D" parent="."]
 collision_layer = 2
@@ -1935,3 +1871,84 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnchoragePoint16"]
 position = Vector2( 468.259, 99.3862 )
 shape = SubResource( 6 )
+
+[node name="AnchoragePoint17" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnchoragePoint17"]
+position = Vector2( 871.757, 675 )
+shape = SubResource( 6 )
+
+[node name="AnchoragePoint18" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnchoragePoint18"]
+position = Vector2( 815.29, 66.9809 )
+shape = SubResource( 6 )
+
+[node name="AnchoragePoint19" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnchoragePoint19"]
+position = Vector2( 815.29, 195 )
+shape = SubResource( 6 )
+
+[node name="AnchoragePoint20" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnchoragePoint20"]
+position = Vector2( 815.29, 371 )
+shape = SubResource( 6 )
+
+[node name="TestButton" type="Button" parent="."]
+margin_left = 37.2972
+margin_top = 225.965
+margin_right = 124.297
+margin_bottom = 245.965
+text = "Save button"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TestButton2" type="Button" parent="."]
+margin_left = 35.9624
+margin_top = 253.329
+margin_right = 122.962
+margin_bottom = 273.329
+text = "criar barco"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TestButton3" type="Button" parent="."]
+margin_left = 8.144
+margin_top = 279.411
+margin_right = 152.144
+margin_bottom = 299.411
+text = "receber 100 moedas"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TestButton4" type="Button" parent="."]
+margin_left = 29.7377
+margin_top = 343.768
+margin_right = 117.738
+margin_bottom = 363.768
+text = "Apagar save"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="TestButton" to="YSort" method="_on_TestButton_pressed"]
+[connection signal="pressed" from="TestButton2" to="YSort/Shipyard3" method="_on_TestButton2_pressed"]
+[connection signal="pressed" from="TestButton2" to="YSort/Shipyard6" method="_on_TestButton2_pressed"]
+[connection signal="pressed" from="TestButton2" to="YSort/Shipyard1" method="_on_TestButton2_pressed"]
+[connection signal="pressed" from="TestButton2" to="YSort/Shipyard4" method="_on_TestButton2_pressed"]
+[connection signal="pressed" from="TestButton2" to="YSort/Shipyard5" method="_on_TestButton2_pressed"]
+[connection signal="pressed" from="TestButton2" to="YSort/Shipyard2" method="_on_TestButton2_pressed"]
+[connection signal="pressed" from="TestButton3" to="." method="_on_TestButton3_pressed"]
+[connection signal="pressed" from="TestButton4" to="YSort" method="_on_TestButton4_pressed"]

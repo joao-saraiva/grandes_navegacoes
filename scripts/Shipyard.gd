@@ -3,21 +3,14 @@ extends Node2D
 onready var ship = preload("res://scenes/Ship.tscn")
 #variaveis para salvar em arquivo\/
 onready var building = false
+onready var purchased = true
 onready var currentBoat = []
 onready var currentFrame = 0
 
-export var speed = 1
-export var resistance = 1
-export var size = 1
-export var navegation_technologies = 1
-export var fire_power = 1
-export var improvement = false
-export var boat = [1,1]
-
 func _ready():
-	if building:
-		buildShip(currentBoat[0],currentBoat[1],currentBoat[2],currentBoat[3],currentBoat[4],currentBoat[5],currentBoat[6])
-	buildShip(speed, resistance, size, navegation_technologies, fire_power, improvement, boat)#linha de teste
+	check_load_state()
+	if purchased:
+		visible = true
 
 func _physics_process(delta):
 	if building:
@@ -26,12 +19,14 @@ func _physics_process(delta):
 		release()
 
 func buildShip(speed, resistance, size, navegation_technologies, fire_power, improvement = false, boat = [1,1]):
+	if not purchased:
+		return
 	var resistance_animation = "0"
 	var fire_power_animation = "0"
 	var upgrade_sequence = ""
 	building = true
 	currentBoat = [speed, resistance, size, navegation_technologies, fire_power, improvement, boat]
-	#define a orderm da animação do ultimo upgrade visual
+	#define a ordem da animação do ultimo upgrade visual
 	if boat[0] < 3 and resistance >= 3 and boat[1] >= 3:
 		upgrade_sequence = "0"
 	elif boat[1] < 3 and fire_power >= 3 and boat[0] >= 3:
@@ -79,3 +74,26 @@ func _on_Releasing_timeout():
 	building = false
 	currentBoat = []
 	currentFrame = 0
+	GlobalVariables.totalShips+=1		#linha de teste
+
+func check_load_state():
+	var load_state = GlobalVariables.shipyards
+	var load_data_found = false
+	
+	for shipyard_name in load_state:
+		if shipyard_name == name:
+			load_data_found = true
+			break
+	
+	if load_data_found:
+		building = load_state[name].building
+		purchased = load_state[name].purchased
+		currentBoat = load_state[name].currentBoat
+		currentFrame = load_state[name].currentFrame
+		if building:
+			buildShip(currentBoat[0],currentBoat[1],currentBoat[2],currentBoat[3],currentBoat[4],currentBoat[5],currentBoat[6])
+
+
+func _on_TestButton2_pressed():				#linha de teste
+	if not building:						#linha de teste
+		buildShip(2,2,2,2,2,false,[1,1])	#linha de teste
