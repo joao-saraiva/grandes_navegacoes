@@ -15,6 +15,7 @@ var mouse3 = false
 var mouse4 = false
 var onScreen = false
 var onMenu = false
+signal salvar
 func _ready():
 	$Holder/Theme.play()
 	pass 
@@ -719,4 +720,27 @@ func _on_Estaleiro2Button_mouse_entered():
 func _on_SairButton_mouse_entered():
 	
 	select = 4
+	pass # Replace with function body.
+
+
+func _on_FecharJogo_pressed():
+	
+	if onMenu:
+		get_tree().quit()
+	
+	pass # Replace with function body.
+
+
+func _on_SairMenu_pressed():
+	
+	if onMenu:
+		$Holder/Menu.visible = false
+		onMenu = false
+		isNavigation = true
+	pass # Replace with function body.
+
+
+func _on_ManualSave_pressed():
+	
+	emit_signal("salvar")
 	pass # Replace with function body.

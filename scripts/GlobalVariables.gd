@@ -8,8 +8,9 @@ var ships = null
 func _ready():
 	SaveFile.save_path = save_path
 	SaveFile.Load_request()
-	coins = SaveFile.loadData.coins
-	shipyards = SaveFile.loadData.shipyards
-	ships = SaveFile.loadData.ships
-	print(ships)
-	totalShips = SaveFile.loadData.totalShips
+	if SaveFile.loadData !=null:
+		coins = SaveFile.loadData.coins
+		shipyards = SaveFile.loadData.shipyards
+		ships = SaveFile.loadData.ships
+		print(ships)
+		totalShips = SaveFile.loadData.totalShips

@@ -16,8 +16,14 @@ _global_script_class_icons={
 [application]
 
 config/name="Grandes_Navegações"
-run/main_scene="res://scenes/HUD.tscn"
+run/main_scene="res://scenes/Ceuta.tscn"
+config/use_custom_user_dir=true
 config/icon="res://icon.png"
+
+[autoload]
+
+SaveFile="*res://scripts/SaveFile.gd"
+GlobalVariables="*res://scripts/GlobalVariables.gd"
 
 [display]
 

@@ -77,6 +77,10 @@ func _on_Releasing_timeout():
 	GlobalVariables.totalShips+=1		#linha de teste
 
 func check_load_state():
+	
+	if GlobalVariables.shipyards == null:
+		return
+		
 	var load_state = GlobalVariables.shipyards
 	var load_data_found = false
 	

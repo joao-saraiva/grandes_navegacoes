@@ -1,6 +1,10 @@
 extends Node2D
 onready var ship_tscn = preload("res://scenes/Ship.tscn")
 func _ready():
+	
+	if SaveFile.loadData == null:
+		return
+		
 	for ship in SaveFile.loadData.ships:
 		var loadShip = ship_tscn.instance()
 		loadShip.speed = SaveFile.loadData.ships[ship].speed
