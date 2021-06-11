@@ -1,10 +1,10 @@
 extends Node2D
 onready var ship_tscn = preload("res://scenes/Ship.tscn")
 func _ready():
-	
+	get_node("YSort").save()
 	if SaveFile.loadData == null:
 		return
-		
+	
 	for ship in SaveFile.loadData.ships:
 		var loadShip = ship_tscn.instance()
 		loadShip.speed = SaveFile.loadData.ships[ship].speed
@@ -17,6 +17,7 @@ func _ready():
 		loadShip.life = SaveFile.loadData.ships[ship].life
 		if SaveFile.loadData.ships[ship].anchored_area != null:
 			loadShip.anchored_area = get_node(SaveFile.loadData.ships[ship].anchored_area)
+			loadShip.anchored_area.monitorable = false
 		else:
 			loadShip.anchored_area = null
 		loadShip.arriving = SaveFile.loadData.ships[ship].arriving

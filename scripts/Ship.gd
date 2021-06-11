@@ -67,7 +67,7 @@ func _on_DetectionDelay_timeout():
 		anchored_area = anchorage_areas[random_choice]
 		anchorage_areas = []
 	
-		position.y = anchored_area.get_children()[0].position.y
+		position.y = anchored_area.position.y
 		movement.x = -speed
 		arriving = true
 	else:
@@ -78,8 +78,8 @@ func reposition():
 	repositioning = true
 
 func dock():
-	var distance = position.x - anchored_area.get_children()[0].position.x
-	if position.x <= anchored_area.get_children()[0].position.x:
+	var distance = position.x - anchored_area.position.x
+	if position.x <= anchored_area.position.x:
 		movement.x = 0
 		arriving = false
 	elif movement.x < -0.1 and distance < 500:

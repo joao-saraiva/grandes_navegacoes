@@ -1745,174 +1745,269 @@ position = Vector2( 442, 508.24 )
 scale = Vector2( 2, 2 )
 
 [node name="AnchoragePoint1" type="Area2D" parent="."]
+position = Vector2( 364.007, 645 )
 collision_layer = 2
 collision_mask = 2
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnchoragePoint1"]
-position = Vector2( 332.716, 131.05 )
 shape = SubResource( 4 )
 
 [node name="AnchoragePoint2" type="Area2D" parent="."]
+position = Vector2( 573.744, 363.715 )
 collision_layer = 2
 collision_mask = 2
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnchoragePoint2"]
-position = Vector2( 719.013, 464.388 )
 shape = SubResource( 5 )
 
 [node name="AnchoragePoint3" type="Area2D" parent="."]
+position = Vector2( 825.416, 697.196 )
 collision_layer = 2
 collision_mask = 2
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnchoragePoint3"]
-position = Vector2( 332.716, 66.9809 )
 shape = SubResource( 6 )
 
 [node name="AnchoragePoint4" type="Area2D" parent="."]
+position = Vector2( 258, 300 )
 collision_layer = 2
 collision_mask = 2
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnchoragePoint4"]
-position = Vector2( 468.259, 158.856 )
 shape = SubResource( 6 )
 
 [node name="AnchoragePoint5" type="Area2D" parent="."]
+position = Vector2( 573.744, 469.032 )
 collision_layer = 2
 collision_mask = 2
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnchoragePoint5"]
-position = Vector2( 625.914, 248.055 )
 shape = SubResource( 6 )
 
 [node name="AnchoragePoint6" type="Area2D" parent="."]
+position = Vector2( 583.556, 748 )
 collision_layer = 2
 collision_mask = 2
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnchoragePoint6"]
-position = Vector2( 757.197, 332.001 )
 shape = SubResource( 6 )
 
 [node name="AnchoragePoint7" type="Area2D" parent="."]
+position = Vector2( 474.18, 723.939 )
 collision_layer = 2
 collision_mask = 2
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnchoragePoint7"]
-position = Vector2( 625.992, 733.475 )
 shape = SubResource( 6 )
 
 [node name="AnchoragePoint8" type="Area2D" parent="."]
+position = Vector2( 299.633, 617.919 )
 collision_layer = 2
 collision_mask = 2
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnchoragePoint8"]
-position = Vector2( 625.992, 220.591 )
 shape = SubResource( 6 )
 
 [node name="AnchoragePoint9" type="Area2D" parent="."]
+position = Vector2( 686.805, 495 )
 collision_layer = 2
 collision_mask = 2
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnchoragePoint9"]
-position = Vector2( 442.222, 696.923 )
 shape = SubResource( 6 )
 
 [node name="AnchoragePoint10" type="Area2D" parent="."]
+position = Vector2( 793.877, 184 )
 collision_layer = 2
 collision_mask = 2
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnchoragePoint10"]
-position = Vector2( 468.259, 40.1358 )
 shape = SubResource( 6 )
 
 [node name="AnchoragePoint11" type="Area2D" parent="."]
+position = Vector2( 805.811, 592.285 )
 collision_layer = 2
 collision_mask = 2
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnchoragePoint11"]
-position = Vector2( 580.067, 178.765 )
 shape = SubResource( 6 )
 
 [node name="AnchoragePoint12" type="Area2D" parent="."]
+position = Vector2( 675.585, 675 )
+rotation = 3.14159
 collision_layer = 2
 collision_mask = 2
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnchoragePoint12"]
-position = Vector2( 322, 621.546 )
 shape = SubResource( 6 )
 
 [node name="AnchoragePoint13" type="Area2D" parent="."]
+position = Vector2( 322, 154.765 )
 collision_layer = 2
 collision_mask = 2
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnchoragePoint13"]
-position = Vector2( 625.992, 279.411 )
 shape = SubResource( 6 )
 
 [node name="AnchoragePoint14" type="Area2D" parent="."]
+position = Vector2( 671.853, 223.261 )
 collision_layer = 2
 collision_mask = 2
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnchoragePoint14"]
-position = Vector2( 537.327, 651.462 )
 shape = SubResource( 6 )
 
 [node name="AnchoragePoint15" type="Area2D" parent="."]
+position = Vector2( 834.927, 344.486 )
 collision_layer = 2
 collision_mask = 2
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnchoragePoint15"]
-position = Vector2( 815.29, 576.537 )
 shape = SubResource( 6 )
 
 [node name="AnchoragePoint16" type="Area2D" parent="."]
+position = Vector2( 659.024, 322.61 )
 collision_layer = 2
 collision_mask = 2
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnchoragePoint16"]
-position = Vector2( 468.259, 99.3862 )
 shape = SubResource( 6 )
 
 [node name="AnchoragePoint17" type="Area2D" parent="."]
+position = Vector2( 442, 250.437 )
 collision_layer = 2
 collision_mask = 2
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnchoragePoint17"]
-position = Vector2( 871.757, 675 )
 shape = SubResource( 6 )
 
 [node name="AnchoragePoint18" type="Area2D" parent="."]
+position = Vector2( 871.757, 276.061 )
 collision_layer = 2
 collision_mask = 2
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnchoragePoint18"]
-position = Vector2( 815.29, 66.9809 )
 shape = SubResource( 6 )
 
 [node name="AnchoragePoint19" type="Area2D" parent="."]
+position = Vector2( 553, 124 )
 collision_layer = 2
 collision_mask = 2
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnchoragePoint19"]
-position = Vector2( 815.29, 195 )
 shape = SubResource( 6 )
 
 [node name="AnchoragePoint20" type="Area2D" parent="."]
+position = Vector2( 626.733, 402.09 )
 collision_layer = 2
 collision_mask = 2
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnchoragePoint20"]
-position = Vector2( 815.29, 371 )
 shape = SubResource( 6 )
 
-[node name="TestButton" type="Button" parent="."]
-margin_left = 37.2972
-margin_top = 225.965
-margin_right = 124.297
-margin_bottom = 245.965
-text = "Save button"
+[node name="AnchoragePoint21" type="Area2D" parent="."]
+position = Vector2( 404.849, 94.7279 )
+collision_layer = 2
+collision_mask = 2
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_group_": true
 }
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnchoragePoint21"]
+shape = SubResource( 6 )
+
+[node name="AnchoragePoint22" type="Area2D" parent="."]
+position = Vector2( 713.148, 69.0592 )
+collision_layer = 2
+collision_mask = 2
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnchoragePoint22"]
+shape = SubResource( 6 )
+
+[node name="AnchoragePoint23" type="Area2D" parent="."]
+position = Vector2( 790, 40 )
+collision_layer = 2
+collision_mask = 2
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnchoragePoint23"]
+shape = SubResource( 6 )
+
+[node name="AnchoragePoint24" type="Area2D" parent="."]
+position = Vector2( 865, 521 )
+collision_layer = 2
+collision_mask = 2
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnchoragePoint24"]
+shape = SubResource( 6 )
 
 [node name="TestButton2" type="Button" parent="."]
 margin_left = 35.9624
@@ -1944,12 +2039,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="salvar" from="HUD" to="YSort" method="_on_HUD_salvar"]
-[connection signal="pressed" from="TestButton" to="YSort" method="_on_TestButton_pressed"]
 [connection signal="pressed" from="TestButton2" to="YSort/Shipyard4" method="_on_TestButton2_pressed"]
-[connection signal="pressed" from="TestButton2" to="YSort/Shipyard3" method="_on_TestButton2_pressed"]
-[connection signal="pressed" from="TestButton2" to="YSort/Shipyard6" method="_on_TestButton2_pressed"]
 [connection signal="pressed" from="TestButton2" to="YSort/Shipyard1" method="_on_TestButton2_pressed"]
-[connection signal="pressed" from="TestButton2" to="YSort/Shipyard2" method="_on_TestButton2_pressed"]
 [connection signal="pressed" from="TestButton2" to="YSort/Shipyard5" method="_on_TestButton2_pressed"]
+[connection signal="pressed" from="TestButton2" to="YSort/Shipyard6" method="_on_TestButton2_pressed"]
+[connection signal="pressed" from="TestButton2" to="YSort/Shipyard2" method="_on_TestButton2_pressed"]
+[connection signal="pressed" from="TestButton2" to="YSort/Shipyard3" method="_on_TestButton2_pressed"]
 [connection signal="pressed" from="TestButton3" to="." method="_on_TestButton3_pressed"]
 [connection signal="pressed" from="TestButton4" to="YSort" method="_on_TestButton4_pressed"]
