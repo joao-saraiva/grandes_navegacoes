@@ -8,7 +8,7 @@ func _on_TestButton4_pressed():		#test function
 		"coins" : 0,
 		"totalShips" : 0,
 		inventory = {
-			"Wine": 0
+			"wine": 0
 		},
 		ships = {
 			

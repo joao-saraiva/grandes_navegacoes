@@ -3,16 +3,17 @@ extends Node2D
 onready var ship = preload("res://scenes/Ship.tscn")
 #variaveis para salvar em arquivo\/
 onready var building = false
-onready var purchased = true
+onready var purchased = false
 onready var currentBoat = []
 onready var currentFrame = 0
 
 func _ready():
 	check_load_state()
-	if purchased:
-		visible = true
+	
 
 func _physics_process(delta):
+	if purchased:
+		visible = true
 	if building:
 		currentFrame = $Ship.frame
 	if currentFrame == 7 and $Releasing.is_stopped():

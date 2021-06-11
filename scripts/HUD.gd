@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+
 var visible = false
 var select = 1
 var menuselect = 1
@@ -15,14 +16,32 @@ var mouse3 = false
 var mouse4 = false
 var onScreen = false
 var onMenu = false
+var totalEstaleiros = 0
+var labelEstaleiro = 1
+var verificar = false
 signal salvar
 func _ready():
 	$Holder/Theme.play()
+	verificar = false
 	pass 
 
 func _process(delta):
 	
+	if !verificar:
+		var n = 1
+		verificar = true
+		
+		for i in range(0,6):
+		
+			if get_parent().get_node("YSort").get_child(i).purchased == true:
+				
+				labelEstaleiro+= 1
+				$Holder/Estabelecimento_background/Total2.text = str(n) + "/6"
+				n += 1
+		
+			
 	$Holder/HBoxContainer/Coins2.text = str(GlobalVariables.coins)
+	$Holder/BarcosPossuidos.text = str(GlobalVariables.totalShips)
 	if Input.is_action_just_pressed("esc"):
 		if $Holder/Menu.visible == false:
 			
@@ -31,6 +50,7 @@ func _process(delta):
 			$Holder/Expedition_background.visible = false
 			$Holder/Studdy_background.visible = false
 			$Holder/Mercadoria_background.visible = false
+			$Holder/Estabelecimento_background.visible = false
 			onScreen = false
 			onMenu = true
 			isNavigation = false
@@ -378,12 +398,29 @@ func _process(delta):
 			$Holder/Estabelecimento_background/Selector2.visible = false
 			$Holder/Estabelecimento_background/Selector3.visible = false
 			$Holder/Estabelecimento_background/Selector4.visible = true
+			
 func _on_StuddyButtom_pressed():
 	if onScreen == false and !onMenu:
+		
 			$Holder/Studdy_background.visible = true
 			isNavigation = false
 			onScreen = true
 			select = 1
+			
+			if GlobalVariables.compass == true:
+				
+				$Holder/Studdy_background/Preco1.visible = false
+				$Holder/Studdy_background/Comprado1.visible = true
+				
+			if GlobalVariables.cartography == true:
+				
+				$Holder/Studdy_background/Preco2.visible = false
+				$Holder/Studdy_background/Comprado2.visible = true
+				
+			if GlobalVariables.astrolabe == true:
+				
+				$Holder/Studdy_background/Preco3.visible = false
+				$Holder/Studdy_background/Comprado3.visible = true
 
 func _on_MercadoriaButton_pressed():
 	if onScreen == false and !onMenu:
@@ -400,6 +437,7 @@ func _on_GerenciamentoButton_pressed():
 		$Holder/Gerenciamento_background.visible = true
 		isNavigation = false
 		onScreen = true
+	
 		
 	pass # Replace with function body.
 
@@ -554,6 +592,8 @@ func _on_EstaleiroButton_pressed():
 	
 	if onScreen == false and !onMenu:
 		
+	
+			
 		$Holder/Estaleiro_background.visible = true
 		isNavigation = false
 		onScreen = true
@@ -598,8 +638,9 @@ func _on_EstabelecimentoButton_pressed():
 
 
 func _on_EstabelecimentoButton_mouse_entered():
+	
 	menuselect = 1
-	print("entrou")
+	
 	pass # Replace with function body.
 
 
@@ -641,20 +682,38 @@ func _on_Sairbutton_mouse_entered():
 
 
 func _on_BussolButton_pressed():
-	$Holder/Studdy_background/Preco1.visible = false
-	$Holder/Studdy_background/Comprado1.visible = true
+	
+	if GlobalVariables.coins >= 3000:
+		
+		$Holder/Studdy_background/Preco1.visible = false
+		$Holder/Studdy_background/Comprado1.visible = true
+		GlobalVariables.compass = true
+		GlobalVariables.coins -= 3000
+		
 	pass # Replace with function body.
 
 
 func _on_CartografiaButton_pressed():
-	$Holder/Studdy_background/Preco2.visible = false
-	$Holder/Studdy_background/Comprado2.visible = true
+	
+	if GlobalVariables.coins >= 3500 :
+		
+		$Holder/Studdy_background/Preco2.visible = false
+		$Holder/Studdy_background/Comprado2.visible = true
+		GlobalVariables.cartography = true
+		GlobalVariables.coins -= 3500
+		
 	pass # Replace with function body.
 
 
 func _on_AstrolabioButton_pressed():
-	$Holder/Studdy_background/Preco3.visible = false
-	$Holder/Studdy_background/Comprado3.visible = true
+	
+	if GlobalVariables.coins >= 3500:
+		
+		$Holder/Studdy_background/Preco3.visible = false
+		$Holder/Studdy_background/Comprado3.visible = true
+		GlobalVariables.astrolabe = true
+		GlobalVariables.coins -= 3500
+		
 	pass # Replace with function body.
 
 
@@ -668,7 +727,7 @@ func _on_Sairbutton_pressed():
 func _on_Button_pressed():
 	
 	if $Holder/Gerenciamento_background.visible == true:
-		print("oi")
+		
 		onScreen = false
 		isNavigation = true
 		$Holder/Gerenciamento_background.visible = false
@@ -693,6 +752,14 @@ func _on_SairButton_pressed():
 
 
 func _on_Estaleiro2Button_pressed():
+	$Holder/Estabelecimento_background/Total2.text = str(labelEstaleiro) + "/6"
+	get_parent().get_node("YSort").get_child(totalEstaleiros).purchased = true
+	if totalEstaleiros <5 && get_parent().get_node("YSort").get_child(5).purchased == false :
+		totalEstaleiros += 1
+		labelEstaleiro += 1
+		
+
+	
 	pass # Replace with function body.
 
 
@@ -743,4 +810,20 @@ func _on_SairMenu_pressed():
 func _on_ManualSave_pressed():
 	
 	emit_signal("salvar")
+	pass # Replace with function body.
+
+
+func _on_NovoBarco_Button_pressed():
+	
+	for i in range (0,6):
+		
+		if get_parent().get_node("YSort").get_child(i).building == false and GlobalVariables.totalShips <=24 :
+			
+			print("navio")
+			break
+			
+			pass
+			
+		pass
+
 	pass # Replace with function body.
