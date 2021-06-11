@@ -1,0 +1,126 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/Foto/DancingScript-Medium.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/Foto/navios back.png" type="Texture" id=2]
+
+[sub_resource type="Theme" id=1]
+
+[sub_resource type="DynamicFont" id=2]
+size = 45
+outline_color = Color( 0.45098, 0.615686, 0.290196, 1 )
+font_data = ExtResource( 1 )
+
+[node name="Control" type="Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="navios back" type="Sprite" parent="."]
+position = Vector2( 683.084, 384.117 )
+scale = Vector2( 1.07376, 1.06927 )
+texture = ExtResource( 2 )
+
+[node name="novoJogo" type="Button" parent="."]
+light_mask = 115
+margin_left = 79.7957
+margin_top = 130.286
+margin_right = 246.796
+margin_bottom = 193.286
+rect_min_size = Vector2( 5, 0 )
+rect_scale = Vector2( 1.5, 1.5 )
+mouse_default_cursor_shape = 2
+theme = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+toggle_mode = true
+action_mode = 0
+text = "Novo jogo"
+flat = true
+clip_text = true
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CarregarJogo" type="Button" parent="."]
+light_mask = 115
+margin_left = 74.3304
+margin_top = 241.339
+margin_right = 321.33
+margin_bottom = 304.339
+rect_min_size = Vector2( 5, 0 )
+rect_scale = Vector2( 1.5, 1.5 )
+mouse_default_cursor_shape = 2
+theme = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+toggle_mode = true
+action_mode = 0
+text = "Carregar Jogo"
+flat = true
+clip_text = true
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Sair" type="Button" parent="."]
+light_mask = 115
+margin_left = 87.3628
+margin_top = 495.24
+margin_right = 254.363
+margin_bottom = 558.24
+rect_min_size = Vector2( 5, 0 )
+rect_scale = Vector2( 1.5, 1.5 )
+mouse_default_cursor_shape = 2
+theme = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+toggle_mode = true
+action_mode = 0
+text = "Sair"
+flat = true
+clip_text = true
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Opcoes" type="Button" parent="."]
+light_mask = 115
+margin_left = 83.8002
+margin_top = 369.222
+margin_right = 250.8
+margin_bottom = 432.222
+rect_min_size = Vector2( 5, 0 )
+rect_scale = Vector2( 1.5, 1.5 )
+mouse_default_cursor_shape = 2
+theme = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+toggle_mode = true
+action_mode = 0
+text = "Opções"
+flat = true
+clip_text = true
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}

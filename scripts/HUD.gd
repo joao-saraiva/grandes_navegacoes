@@ -18,7 +18,6 @@ var onMenu = false
 signal salvar
 func _ready():
 	$Holder/Theme.play()
-	
 	pass 
 
 func _process(delta):
