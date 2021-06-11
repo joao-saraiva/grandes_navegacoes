@@ -18,11 +18,12 @@ var onMenu = false
 signal salvar
 func _ready():
 	$Holder/Theme.play()
+	
 	pass 
 
 func _process(delta):
-
 	
+	$Holder/HBoxContainer/Coins2.text = str(GlobalVariables.coins)
 	if Input.is_action_just_pressed("esc"):
 		if $Holder/Menu.visible == false:
 			

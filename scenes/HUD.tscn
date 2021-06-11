@@ -40,7 +40,7 @@ font_data = SubResource( 1 )
 font_path = "res://assets/FONTE.ttf"
 
 [sub_resource type="DynamicFont" id=4]
-size = 17
+size = 30
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 font_data = SubResource( 3 )
@@ -1436,15 +1436,23 @@ __meta__ = {
 position = Vector2( -22.4908, 30.0592 )
 scale = Vector2( 5, 5 )
 frames = SubResource( 5 )
-frame = 1
+frame = 2
 playing = true
 
-[node name="Label" type="Label" parent="Holder/HBoxContainer"]
-margin_top = 21.0
-margin_right = 40.0
-margin_bottom = 42.0
+[node name="Coins" type="Label" parent="Holder/HBoxContainer"]
+margin_top = 20.0
+margin_right = 20.0
+margin_bottom = 57.0
 custom_fonts/font = SubResource( 4 )
-text = "X100"
+text = "X"
+
+[node name="Coins2" type="Label" parent="Holder/HBoxContainer"]
+margin_left = 24.0
+margin_top = 20.0
+margin_right = 43.0
+margin_bottom = 57.0
+custom_fonts/font = SubResource( 4 )
+text = "0"
 
 [node name="Arrow" type="Sprite" parent="Holder"]
 position = Vector2( 40, 741.025 )
