@@ -75,7 +75,7 @@ func _on_Releasing_timeout():
 	building = false
 	currentBoat = []
 	currentFrame = 0
-	GlobalVariables.totalShips+=1		#linha de teste
+	GlobalVariables.totalShips+=1
 
 func check_load_state():
 	

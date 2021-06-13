@@ -1,7 +1,8 @@
 extends Node2D
 onready var ship_tscn = preload("res://scenes/Ship.tscn")
 func _ready():
-	get_node("YSort").save()
+	print(SaveFile.loadData)
+	#get_node("YSort").save()
 	if SaveFile.loadData == null:
 		return
 	
@@ -23,6 +24,7 @@ func _ready():
 		loadShip.arriving = SaveFile.loadData.ships[ship].arriving
 		loadShip.sailing = SaveFile.loadData.ships[ship].sailing
 		loadShip.repositioning = SaveFile.loadData.ships[ship].repositioning
+		loadShip.anchored = SaveFile.loadData.ships[ship].anchored
 		loadShip.define_sprite()
 		get_node("YSort").add_child(loadShip)
 

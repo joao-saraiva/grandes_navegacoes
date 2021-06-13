@@ -1,5 +1,6 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
+[ext_resource path="res://scripts/Expedition.gd" type="Script" id=1]
 [ext_resource path="res://assets/Minifantasy_MapsRiver.png" type="Texture" id=2]
 [ext_resource path="res://assets/Minifantasy_MapsMountains.png" type="Texture" id=3]
 [ext_resource path="res://assets/Minifantasy_MapsForest.png" type="Texture" id=4]
@@ -2038,12 +2039,24 @@ text = "Apagar save"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Button" type="Button" parent="."]
+margin_left = 43.1122
+margin_top = 464.514
+margin_right = 116.112
+margin_bottom = 534.514
+text = "explorar"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="salvar" from="HUD" to="YSort" method="_on_HUD_salvar"]
-[connection signal="pressed" from="TestButton2" to="YSort/Shipyard5" method="_on_TestButton2_pressed"]
-[connection signal="pressed" from="TestButton2" to="YSort/Shipyard4" method="_on_TestButton2_pressed"]
-[connection signal="pressed" from="TestButton2" to="YSort/Shipyard6" method="_on_TestButton2_pressed"]
-[connection signal="pressed" from="TestButton2" to="YSort/Shipyard1" method="_on_TestButton2_pressed"]
 [connection signal="pressed" from="TestButton2" to="YSort/Shipyard3" method="_on_TestButton2_pressed"]
+[connection signal="pressed" from="TestButton2" to="YSort/Shipyard1" method="_on_TestButton2_pressed"]
+[connection signal="pressed" from="TestButton2" to="YSort/Shipyard4" method="_on_TestButton2_pressed"]
+[connection signal="pressed" from="TestButton2" to="YSort/Shipyard5" method="_on_TestButton2_pressed"]
 [connection signal="pressed" from="TestButton2" to="YSort/Shipyard2" method="_on_TestButton2_pressed"]
+[connection signal="pressed" from="TestButton2" to="YSort/Shipyard6" method="_on_TestButton2_pressed"]
 [connection signal="pressed" from="TestButton3" to="." method="_on_TestButton3_pressed"]
 [connection signal="pressed" from="TestButton4" to="YSort" method="_on_TestButton4_pressed"]
+[connection signal="pressed" from="Button" to="Button" method="_on_Button_pressed"]

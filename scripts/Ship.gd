@@ -10,14 +10,18 @@ export var fire_power = 1
 export var life = 100
 var anchorage_areas = []
 var anchored_area = null
+var anchored = false
 var arriving = false
 var sailing = false
 var repositioning = false
+var in_expedition = false
+var expedition_location = null
+var lost_in_sea = false
+var killed_in_battle = false
 
 func _ready():
 	define_sprite()
 	$AnimationPlayer.play("floating")
-	reposition()#linha de teste
 
 func _physics_process(delta):
 	if arriving:
@@ -47,6 +51,7 @@ func update_animations():
 		$Sprite.scale.x = abs($Sprite.scale.x)
 
 func sail():
+	anchored = false
 	sailing = true
 
 func arrive():
@@ -75,6 +80,7 @@ func _on_DetectionDelay_timeout():
 		arrive()
 		
 func reposition():
+	anchored = false
 	repositioning = true
 
 func dock():
@@ -82,6 +88,7 @@ func dock():
 	if position.x <= anchored_area.position.x:
 		movement.x = 0
 		arriving = false
+		anchored = true
 	elif movement.x < -0.1 and distance < 500:
 		if speed != 1:
 			if distance > 300:
@@ -150,3 +157,49 @@ func define_sprite():
 				$Sprite.texture = load("res://assets/ships/ship36.tres")
 			else:
 				$Sprite.texture = load("res://assets/ships/ship35.tres")
+
+func new_expedition(location, fleet_navegation_tech, fleet_fire_power, fleet_speed):
+	#   SALVAR TEMPO DOS TIMERS EM ARQUIVO
+	location.searching += 1
+	expedition_location = location
+	randomize()
+	var lost_in_sea_RNG = rand_range(1,location.navegationDifficulty)
+	if lost_in_sea_RNG > fleet_navegation_tech*2:
+		lost_in_sea = true
+		$ExpeditionTimeout.wait_time = location.distance/fleet_speed
+		$FailureTimeout.wait_time = location.distance/fleet_speed/2
+		$ExpeditionTimeout.start()
+		$FailureTimeout.start()
+		sail()
+		return
+	var battle_RNG = rand_range(1,location.dangerousness)
+	if battle_RNG > 10:
+		var damage_RNG = rand_range(1,location.dangerousness*20)/fleet_fire_power
+		life -= damage_RNG
+		if life <= 0:
+			$ExpeditionTimeout.wait_time = location.distance/fleet_speed
+			$FailureTimeout.wait_time = location.distance/fleet_speed/2
+			$ExpeditionTimeout.start()
+			$FailureTimeout.start()
+			sail()
+			return
+	$ExpeditionTimeout.wait_time = location.distance/fleet_speed
+	$ExpeditionTimeout.start()
+	sail()
+
+func _on_ExpeditionTimeout_timeout():
+	in_expedition = false
+	arrive()
+	print("found")
+	print(life)
+	expedition_location.found = true
+	expedition_location = null
+	
+
+func _on_FailureTimeout_timeout():
+	$ExpeditionTimeout.stop()
+	expedition_location.searching -= 1
+	GlobalVariables.totalShips -= 1
+	print("fail")
+	print(life)
+	queue_free()

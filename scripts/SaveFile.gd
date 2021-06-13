@@ -1,5 +1,27 @@
 extends Node
-var loadData
+var loadData = {
+		"coins" : 0,
+		"totalShips" : 0,
+		inventory = {
+			"wine": 0
+		},
+		ships = {
+			
+		},
+		shipyards = {
+			
+		},
+		upgrades = {
+			"compass": false,
+			"cartography": false,
+			"astrolabe": false,
+			"Madeira": 1,
+			"canhao": 1,
+			"vela": 1,
+			"arquitetura_nautica": 1
+		},
+		locations = {}
+	}
 var data
 var save_path = ""
 

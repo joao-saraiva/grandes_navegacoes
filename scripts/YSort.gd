@@ -20,7 +20,12 @@ func _on_TestButton4_pressed():		#test function
 			"compass": false,
 			"cartography": false,
 			"astrolabe": false,
-		}
+			"Madeira": 1,
+			"canhao": 1,
+			"vela": 1,
+			"arquitetura_nautica": 1
+		},
+		locations = {}
 	}
 	SaveFile.Save_request()
 
@@ -43,7 +48,12 @@ func save():
 			"compass": GlobalVariables.compass,
 			"cartography": GlobalVariables.cartography,
 			"astrolabe": GlobalVariables.astrolabe,
-		}
+			"Madeira": GlobalVariables.Madeira,
+			"canhao": GlobalVariables.canhao,
+			"vela": GlobalVariables.vela,
+			"arquitetura_nautica": GlobalVariables.arquitetura_nautica
+		},
+		locations = Locations.exploration
 	}
 	
 	for node in children:
@@ -58,7 +68,8 @@ func save():
 											 "life": node.life,
 											 "arriving": node.arriving,
 											 "sailing": node.sailing,
-											 "repositioning": node.repositioning}
+											 "repositioning": node.repositioning,
+											 "anchored": node.anchored}
 			if node.anchored_area != null:
 				SaveFile.data.ships[node.name]["anchored_area"] = node.anchored_area.name
 			else:
@@ -69,4 +80,5 @@ func save():
 												"currentBoat": node.currentBoat, 
 												"currentFrame": node.currentFrame}
 	print(SaveFile.data.shipyards)
+	print(SaveFile.data.ships)
 	SaveFile.Save_request()
