@@ -43,7 +43,7 @@ outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 font_data = SubResource( 3 )
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 resource_name = "FLIP"
 tracks/0/type = "value"
 tracks/0/path = NodePath("semEspacoPlayer/semEspaco:rect_position")
@@ -58,7 +58,7 @@ tracks/0/keys = {
 "values": [ Vector2( 921.76, 165 ), Vector2( 921.76, 199 ), Vector2( 921.76, 163 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 resource_name = "FLIP2"
 tracks/0/type = "value"
 tracks/0/path = NodePath("semEspacoPlayer/SemEstaleiro:rect_position")
@@ -73,7 +73,7 @@ tracks/0/keys = {
 "values": [ Vector2( 921.76, 163 ), Vector2( 921.76, 197 ), Vector2( 921.76, 161 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=7]
 resource_name = "FLIP3"
 tracks/0/type = "value"
 tracks/0/path = NodePath("semEspacoPlayer/semBarcos:rect_position")
@@ -88,7 +88,7 @@ tracks/0/keys = {
 "values": [ Vector2( 921.76, 161 ), Vector2( 921.76, 196 ), Vector2( 921.76, 166 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=8]
 resource_name = "FLIP4"
 tracks/0/type = "value"
 tracks/0/path = NodePath("semEspacoPlayer/semBarcoVida:rect_position")
@@ -103,7 +103,7 @@ tracks/0/keys = {
 "values": [ Vector2( 921.76, 166 ), Vector2( 921.76, 207 ), Vector2( 921.76, 165 ) ]
 }
 
-[sub_resource type="SpriteFrames" id=5]
+[sub_resource type="SpriteFrames" id=9]
 animations = [ {
 "frames": [ ExtResource( 9 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 12 ) ],
 "loop": true,
@@ -693,6 +693,9 @@ margin_bottom = 217.0
 focus_mode = 0
 enabled_focus_mode = 0
 flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Resistencia_NOVOBARCO" type="Button" parent="Holder/NovoBarco_background"]
 margin_left = 531.271
@@ -1050,6 +1053,39 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="proximo" type="Label" parent="Holder/AprimorarBarco_background"]
+margin_left = 853.0
+margin_top = 267.261
+margin_right = 859.0
+margin_bottom = 288.261
+custom_fonts/font = SubResource( 2 )
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="proximo2" type="Label" parent="Holder/AprimorarBarco_background"]
+margin_left = 686.0
+margin_top = 362.0
+margin_right = 758.0
+margin_bottom = 383.0
+custom_fonts/font = SubResource( 2 )
+text = "COMPRAR = €"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="totalBARCOS" type="Label" parent="Holder/AprimorarBarco_background"]
+margin_left = 831.0
+margin_top = 166.0
+margin_right = 867.0
+margin_bottom = 187.0
+custom_fonts/font = SubResource( 2 )
+text = "0/0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="velocidade_button" type="Button" parent="Holder/AprimorarBarco_background"]
 margin_left = 533.0
 margin_top = 177.0
@@ -1106,6 +1142,33 @@ margin_bottom = 382.0
 focus_mode = 0
 enabled_focus_mode = 0
 flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PROXIMO" type="Button" parent="Holder/AprimorarBarco_background"]
+margin_left = 853.0
+margin_top = 266.0
+margin_right = 865.0
+margin_bottom = 286.0
+focus_mode = 0
+enabled_focus_mode = 0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="comprar_melhorias" type="Button" parent="Holder/AprimorarBarco_background"]
+margin_left = 686.0
+margin_top = 362.0
+margin_right = 859.0
+margin_bottom = 382.0
+focus_mode = 0
+enabled_focus_mode = 0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="RepararBarco_background" type="Control" parent="Holder"]
 visible = false
@@ -1602,10 +1665,10 @@ __meta__ = {
 }
 
 [node name="semEspacoPlayer" type="AnimationPlayer" parent="Holder/Estaleiro_background"]
-anims/FLIP = SubResource( 6 )
-anims/FLIP2 = SubResource( 7 )
-anims/FLIP3 = SubResource( 8 )
-anims/FLIP4 = SubResource( 9 )
+anims/FLIP = SubResource( 5 )
+anims/FLIP2 = SubResource( 6 )
+anims/FLIP3 = SubResource( 7 )
+anims/FLIP4 = SubResource( 8 )
 
 [node name="semEspaco" type="Label" parent="Holder/Estaleiro_background/semEspacoPlayer"]
 visible = false
@@ -2180,7 +2243,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label9" type="Label" parent="Holder/Studdy_background"]
+[node name="total4" type="Label" parent="Holder/Studdy_background"]
 anchor_right = 0.403
 anchor_bottom = 0.309
 margin_left = 834.0
@@ -2232,7 +2295,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label10" type="Label" parent="Holder/Studdy_background"]
+[node name="total5" type="Label" parent="Holder/Studdy_background"]
 anchor_right = 0.403
 anchor_bottom = 0.309
 margin_left = 834.0
@@ -2245,7 +2308,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label11" type="Label" parent="Holder/Studdy_background"]
+[node name="total6" type="Label" parent="Holder/Studdy_background"]
 anchor_right = 0.403
 anchor_bottom = 0.309
 margin_left = 834.0
@@ -2258,7 +2321,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label12" type="Label" parent="Holder/Studdy_background"]
+[node name="total7" type="Label" parent="Holder/Studdy_background"]
 anchor_right = 0.403
 anchor_bottom = 0.309
 margin_left = 834.0
@@ -2780,7 +2843,8 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Holder/HBoxContainer"]
 position = Vector2( -22.4908, 30.0592 )
 scale = Vector2( 5, 5 )
-frames = SubResource( 5 )
+frames = SubResource( 9 )
+frame = 1
 playing = true
 
 [node name="Coins" type="Label" parent="Holder/HBoxContainer"]
@@ -2867,13 +2931,19 @@ stream = ExtResource( 26 )
 [connection signal="pressed" from="Holder/Menu/FecharJogo" to="." method="_on_FecharJogo_pressed"]
 [connection signal="value_changed" from="Holder/Menu/HSlider" to="." method="_on_HSlider_value_changed"]
 [connection signal="mouse_entered" from="Holder/NovoBarco_background/Velocidade_NOVOBARCO" to="." method="_on_Velocidade_NOVOBARCO_mouse_entered"]
+[connection signal="pressed" from="Holder/NovoBarco_background/Velocidade_NOVOBARCO" to="." method="_on_Velocidade_NOVOBARCO_pressed"]
 [connection signal="mouse_entered" from="Holder/NovoBarco_background/Resistencia_NOVOBARCO" to="." method="_on_Resistencia_NOVOBARCO_mouse_entered"]
+[connection signal="pressed" from="Holder/NovoBarco_background/Resistencia_NOVOBARCO" to="." method="_on_Resistencia_NOVOBARCO_pressed"]
 [connection signal="mouse_entered" from="Holder/NovoBarco_background/Tamanho_NOVOBARCO" to="." method="_on_Tamanho_NOVOBARCO_mouse_entered"]
+[connection signal="pressed" from="Holder/NovoBarco_background/Tamanho_NOVOBARCO" to="." method="_on_Tamanho_NOVOBARCO_pressed"]
 [connection signal="mouse_entered" from="Holder/NovoBarco_background/Tecnologogias_NOVOBARCO" to="." method="_on_Tecnologogias_NOVOBARCO_mouse_entered"]
+[connection signal="pressed" from="Holder/NovoBarco_background/Tecnologogias_NOVOBARCO" to="." method="_on_Tecnologogias_NOVOBARCO_pressed"]
 [connection signal="mouse_entered" from="Holder/NovoBarco_background/PoderDeFogo_NOVOBARCO" to="." method="_on_PoderDeFogo_NOVOBARCO_mouse_entered"]
+[connection signal="pressed" from="Holder/NovoBarco_background/PoderDeFogo_NOVOBARCO" to="." method="_on_PoderDeFogo_NOVOBARCO_pressed"]
 [connection signal="mouse_entered" from="Holder/NovoBarco_background/Sair_NOVOBARCO" to="." method="_on_Sair_NOVOBARCO_mouse_entered"]
 [connection signal="pressed" from="Holder/NovoBarco_background/Sair_NOVOBARCO" to="." method="_on_Sair_NOVOBARCO_pressed"]
 [connection signal="mouse_entered" from="Holder/NovoBarco_background/Comprar_NOVOBARCO" to="." method="_on_Comprar_NOVOBARCO_mouse_entered"]
+[connection signal="pressed" from="Holder/NovoBarco_background/Comprar_NOVOBARCO" to="." method="_on_Comprar_NOVOBARCO_pressed"]
 [connection signal="mouse_entered" from="Holder/AprimorarBarco_background/velocidade_button" to="." method="_on_velocidade_button_mouse_entered"]
 [connection signal="pressed" from="Holder/AprimorarBarco_background/velocidade_button" to="." method="_on_velocidade_button_pressed"]
 [connection signal="mouse_entered" from="Holder/AprimorarBarco_background/resistencia_button" to="." method="_on_resistencia_button_mouse_entered"]
@@ -2882,6 +2952,7 @@ stream = ExtResource( 26 )
 [connection signal="mouse_entered" from="Holder/AprimorarBarco_background/poder_fogo_button" to="." method="_on_poder_fogo_button_mouse_entered"]
 [connection signal="mouse_entered" from="Holder/AprimorarBarco_background/sair_barco_melhorias" to="." method="_on_sair_barco_melhorias_mouse_entered"]
 [connection signal="pressed" from="Holder/AprimorarBarco_background/sair_barco_melhorias" to="." method="_on_sair_barco_melhorias_pressed"]
+[connection signal="pressed" from="Holder/AprimorarBarco_background/PROXIMO" to="." method="_on_PROXIMO_pressed"]
 [connection signal="mouse_entered" from="Holder/RepararBarco_background/SairReparar_button" to="." method="_on_SairReparar_button_mouse_entered"]
 [connection signal="pressed" from="Holder/RepararBarco_background/SairReparar_button" to="." method="_on_SairReparar_button_pressed"]
 [connection signal="mouse_entered" from="Holder/RepararBarco_background/custoReparar_button" to="." method="_on_custoReparar_button_mouse_entered"]
@@ -2918,9 +2989,13 @@ stream = ExtResource( 26 )
 [connection signal="mouse_entered" from="Holder/Studdy_background/AstrolabioButton" to="." method="_on_AstrolabioButton_mouse_entered"]
 [connection signal="pressed" from="Holder/Studdy_background/AstrolabioButton" to="." method="_on_AstrolabioButton_pressed"]
 [connection signal="mouse_entered" from="Holder/Studdy_background/MadeitaButton" to="." method="_on_MadeitaButton_mouse_entered"]
+[connection signal="pressed" from="Holder/Studdy_background/MadeitaButton" to="." method="_on_MadeitaButton_pressed"]
 [connection signal="mouse_entered" from="Holder/Studdy_background/CanhaoButton" to="." method="_on_CanhaoButton_mouse_entered"]
+[connection signal="pressed" from="Holder/Studdy_background/CanhaoButton" to="." method="_on_CanhaoButton_pressed"]
 [connection signal="mouse_entered" from="Holder/Studdy_background/VelaButton" to="." method="_on_VelaButton_mouse_entered"]
+[connection signal="pressed" from="Holder/Studdy_background/VelaButton" to="." method="_on_VelaButton_pressed"]
 [connection signal="mouse_entered" from="Holder/Studdy_background/Arquiteutra Button" to="." method="_on_Arquiteutra_Button_mouse_entered"]
+[connection signal="pressed" from="Holder/Studdy_background/Arquiteutra Button" to="." method="_on_Arquiteutra_Button_pressed"]
 [connection signal="mouse_entered" from="Holder/Studdy_background/Sairbutton" to="." method="_on_Sairbutton_mouse_entered"]
 [connection signal="pressed" from="Holder/Studdy_background/Sairbutton" to="." method="_on_Sairbutton_pressed"]
 [connection signal="pressed" from="Holder/Mercadoria_background/ButtonSairMercadoria" to="." method="_on_ButtonSairMercadoria_pressed"]
