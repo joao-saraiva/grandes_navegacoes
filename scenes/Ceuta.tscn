@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://scripts/Expedition.gd" type="Script" id=1]
 [ext_resource path="res://assets/Minifantasy_MapsRiver.png" type="Texture" id=2]
@@ -11,6 +11,8 @@
 [ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scripts/GameScene.gd" type="Script" id=10]
 [ext_resource path="res://scripts/YSort.gd" type="Script" id=11]
+[ext_resource path="res://scenes/Ship.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scripts/TaxesShip.gd" type="Script" id=13]
 
 [sub_resource type="TileSet" id=1]
 0/name = "01"
@@ -1682,6 +1684,8 @@ radius = 8.80761
 [sub_resource type="CircleShape2D" id=6]
 radius = 8.52229
 
+[sub_resource type="CircleShape2D" id=7]
+
 [node name="Ceuta" type="Node2D"]
 script = ExtResource( 10 )
 
@@ -1744,6 +1748,10 @@ scale = Vector2( 2, 2 )
 [node name="Shipyard6" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 442, 508.24 )
 scale = Vector2( 2, 2 )
+
+[node name="TaxesShip" parent="YSort" instance=ExtResource( 12 )]
+position = Vector2( 1558.56, 379.436 )
+script = ExtResource( 13 )
 
 [node name="AnchoragePoint1" type="Area2D" parent="."]
 position = Vector2( 364.007, 645 )
@@ -1823,7 +1831,7 @@ __meta__ = {
 shape = SubResource( 6 )
 
 [node name="AnchoragePoint8" type="Area2D" parent="."]
-position = Vector2( 299.633, 617.919 )
+position = Vector2( 299.633, 623.975 )
 collision_layer = 2
 collision_mask = 2
 __meta__ = {
@@ -1856,7 +1864,7 @@ __meta__ = {
 shape = SubResource( 6 )
 
 [node name="AnchoragePoint11" type="Area2D" parent="."]
-position = Vector2( 805.811, 592.285 )
+position = Vector2( 825.416, 596.989 )
 collision_layer = 2
 collision_mask = 2
 __meta__ = {
@@ -2010,6 +2018,17 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnchoragePoint24"]
 shape = SubResource( 6 )
 
+[node name="TradePoint" type="Area2D" parent="."]
+position = Vector2( 215.72, 575 )
+collision_layer = 2
+collision_mask = 2
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TradePoint"]
+shape = SubResource( 7 )
+
 [node name="TestButton2" type="Button" parent="."]
 margin_left = 35.9624
 margin_top = 253.329
@@ -2050,13 +2069,42 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Button2" type="Button" parent="."]
+margin_left = 44.894
+margin_top = 560.731
+margin_right = 117.894
+margin_bottom = 630.731
+text = "colonizar"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button3" type="Button" parent="."]
+margin_left = 42.0656
+margin_top = 651.241
+margin_right = 115.066
+margin_bottom = 721.241
+text = "printar lista de locais"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TaxesTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
 [connection signal="salvar" from="HUD" to="YSort" method="_on_HUD_salvar"]
+[connection signal="pressed" from="TestButton2" to="YSort/Shipyard2" method="_on_TestButton2_pressed"]
+[connection signal="pressed" from="TestButton2" to="YSort/Shipyard3" method="_on_TestButton2_pressed"]
+[connection signal="pressed" from="TestButton2" to="YSort/Shipyard1" method="_on_TestButton2_pressed"]
 [connection signal="pressed" from="TestButton2" to="YSort/Shipyard4" method="_on_TestButton2_pressed"]
 [connection signal="pressed" from="TestButton2" to="YSort/Shipyard5" method="_on_TestButton2_pressed"]
-[connection signal="pressed" from="TestButton2" to="YSort/Shipyard3" method="_on_TestButton2_pressed"]
 [connection signal="pressed" from="TestButton2" to="YSort/Shipyard6" method="_on_TestButton2_pressed"]
-[connection signal="pressed" from="TestButton2" to="YSort/Shipyard1" method="_on_TestButton2_pressed"]
-[connection signal="pressed" from="TestButton2" to="YSort/Shipyard2" method="_on_TestButton2_pressed"]
 [connection signal="pressed" from="TestButton3" to="." method="_on_TestButton3_pressed"]
 [connection signal="pressed" from="TestButton4" to="YSort" method="_on_TestButton4_pressed"]
 [connection signal="pressed" from="Button" to="Button" method="_on_Button_pressed"]
+[connection signal="pressed" from="Button2" to="Button2" method="_on_Button2_pressed"]
+[connection signal="pressed" from="Button3" to="Button3" method="_on_Button3_pressed"]
+[connection signal="timeout" from="TaxesTimer" to="YSort/TaxesShip" method="_on_TaxesTimer_timeout"]

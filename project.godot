@@ -16,7 +16,6 @@ _global_script_class_icons={
 [application]
 
 config/name="Grandes_Navegações"
-run/main_scene="res://scenes/Ceuta.tscn"
 config/use_custom_user_dir=true
 config/icon="res://icon.png"
 

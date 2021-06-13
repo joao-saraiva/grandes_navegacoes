@@ -19,7 +19,6 @@ func _ready():
 	if SaveFile.loadData != null:
 		coins = SaveFile.loadData.coins
 		shipyards = SaveFile.loadData.shipyards
-		ships = SaveFile.loadData.ships
 		totalShips = SaveFile.loadData.totalShips
 		wineCount = SaveFile.loadData.inventory.wine
 		compass = SaveFile.loadData.upgrades.compass

@@ -13,6 +13,9 @@ func _on_TestButton4_pressed():		#test function
 		ships = {
 			
 		},
+		taxesship = {
+			
+		},
 		shipyards = {
 			
 		},
@@ -41,6 +44,9 @@ func save():
 		ships = {
 			
 		},
+		taxesship = {
+			
+		},
 		shipyards = {
 			
 		},
@@ -57,28 +63,52 @@ func save():
 	}
 	
 	for node in children:
-		if node is KinematicBody2D:
-			SaveFile.data.ships[node.name] = {"position":node.position,
-											"movement": node.movement,
-											 "speed": node.speed,
-											 "resistance": node.resistance,
-											 "size": node.size,
-											 "navegation_technologies": node.navegation_technologies,
-											 "fire_power": node.fire_power,
-											 "life": node.life,
-											 "arriving": node.arriving,
-											 "sailing": node.sailing,
-											 "repositioning": node.repositioning,
-											 "anchored": node.anchored}
+		if node is KinematicBody2D and node.name != "TaxesShip":
+			print(node.name)
+			SaveFile.data.ships[node.name] = {
+				"position":node.position,
+				"movement": node.movement,
+				 "speed": node.speed,
+				 "resistance": node.resistance,
+				 "size": node.size,
+				 "navegation_technologies": node.navegation_technologies,
+				 "fire_power": node.fire_power,
+				 "life": node.life,
+				 "arriving": node.arriving,
+				 "sailing": node.sailing,
+				 "repositioning": node.repositioning,
+				 "anchored": node.anchored,
+				 "expedition_location": node.expedition_location,
+				 "expedition_type": node.expedition_type,
+				 "in_expedition": node.in_expedition,
+				 "expedition_time": node.expedition_time,
+				 "failure_time": node.failure_time
+			}
 			if node.anchored_area != null:
 				SaveFile.data.ships[node.name]["anchored_area"] = node.anchored_area.name
 			else:
 				SaveFile.data.ships[node.name]["anchored_area"] = null
+		elif node is KinematicBody2D and node.name == "TaxesShip":
+			SaveFile.data.taxesship = {
+				"position": node.position,
+				"movement": node.movement,
+				"anchored": node.anchored,
+				"arriving": node.arriving,
+				"sailing": node.sailing,
+				"taxes": node.taxes,
+				"time_left": node.time_left
+			}
+			if node.anchored_area != null:
+				SaveFile.data.taxesship.anchored_area = node.anchored_area.name
+			else:
+				SaveFile.data.taxesship.anchored_area = null
 		if node is StaticBody2D:
 			SaveFile.data.shipyards[node.name] = {"building":node.building, 
 												"purchased": node.purchased, 
 												"currentBoat": node.currentBoat, 
-												"currentFrame": node.currentFrame}
+												"currentFrame": node.currentFrame
+												}
+		
 	print(SaveFile.data.shipyards)
 	print(SaveFile.data.ships)
 	SaveFile.Save_request()

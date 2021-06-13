@@ -25,9 +25,14 @@ func _ready():
 		loadShip.sailing = SaveFile.loadData.ships[ship].sailing
 		loadShip.repositioning = SaveFile.loadData.ships[ship].repositioning
 		loadShip.anchored = SaveFile.loadData.ships[ship].anchored
+		loadShip.expedition_location = SaveFile.loadData.ships[ship].expedition_location
+		loadShip.in_expedition = SaveFile.loadData.ships[ship].in_expedition
+		loadShip.expedition_time = SaveFile.loadData.ships[ship].expedition_time
+		loadShip.failure_time = SaveFile.loadData.ships[ship].failure_time
+		loadShip.expedition_type = SaveFile.loadData.ships[ship].expedition_type
 		loadShip.define_sprite()
 		get_node("YSort").add_child(loadShip)
-
+	
 
 func _on_TestButton3_pressed():			#teste
 	GlobalVariables.coins += 100		#teste

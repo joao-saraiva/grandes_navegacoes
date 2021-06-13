@@ -41,7 +41,8 @@ var exploration = {
 		"navegationDifficulty": 10,
 		"dangerousness": 13,
 		"found": false,
-		"searching": 0
+		"searching": 0,
+		"colonized": false
 	},
 
 	acores = {
@@ -49,7 +50,8 @@ var exploration = {
 		"navegationDifficulty": 15,
 		"dangerousness": 15,
 		"found": false,
-		"searching": 0
+		"searching": 0,
+		"colonized": false
 	},
 
 	cabo_verde = {
@@ -57,7 +59,8 @@ var exploration = {
 		"navegationDifficulty": 16,
 		"dangerousness": 25,
 		"found": false,
-		"searching": 0
+		"searching": 0,
+		"colonized": false
 	},
 
 	sao_tome = {
@@ -65,7 +68,8 @@ var exploration = {
 		"navegationDifficulty": 20,
 		"dangerousness": 50,
 		"found": false,
-		"searching": 0
+		"searching": 0,
+		"colonized": false
 	},
 
 	caboBoaEsperanca = {
@@ -73,7 +77,8 @@ var exploration = {
 		"navegationDifficulty": 30,
 		"dangerousness": 80,
 		"found": false,
-		"searching": 0
+		"searching": 0,
+		"colonized": false
 	},
 	
 	india = {

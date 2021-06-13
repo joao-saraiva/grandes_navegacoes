@@ -8,6 +8,9 @@ var loadData = {
 		ships = {
 			
 		},
+		taxesship = {
+			
+		},
 		shipyards = {
 			
 		},

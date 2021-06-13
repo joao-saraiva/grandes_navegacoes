@@ -16,10 +16,20 @@ var sailing = false
 var repositioning = false
 var in_expedition = false
 var expedition_location = null
+var expedition_type = 0
 var lost_in_sea = false
 var killed_in_battle = false
+var expedition_time = 0
+var failure_time = 0
 
 func _ready():
+	if in_expedition and failure_time != 0:
+		$FailureTimeout.wait_time = failure_time
+		$FailureTimeout.start()
+	elif in_expedition:
+		$ExpeditionTimeout.wait_time = expedition_time
+		$ExpeditionTimeout.start()
+		
 	define_sprite()
 	$AnimationPlayer.play("floating")
 
@@ -37,10 +47,11 @@ func _physics_process(delta):
 				repositioning = false
 		elif movement.x < speed:
 			movement.x += 0.01
-	
+	if in_expedition:
+		expedition_time = $ExpeditionTimeout.time_left
+		failure_time = $FailureTimeout.time_left
 	move_and_collide(movement)
 	update_animations()
-	
 
 func update_animations():
 	if movement.x < 0:
@@ -55,12 +66,14 @@ func sail():
 	sailing = true
 
 func arrive():
+	print("arriving")
 	position = Vector2(1450, 384)
 	$Area2D.monitoring = true
 	$DetectionDelay.start()
 
 func _on_Area2D_area_entered(area):
-	anchorage_areas.append(area)
+	if area.name != "TradePoint":
+		anchorage_areas.append(area)
 
 func _on_DetectionDelay_timeout():
 	$Area2D.monitoring = false
@@ -158,10 +171,12 @@ func define_sprite():
 			else:
 				$Sprite.texture = load("res://assets/ships/ship35.tres")
 
-func new_expedition(location, fleet_navegation_tech, fleet_fire_power, fleet_speed):
+func new_expedition(type, location, battle_RNG, fleet_navegation_tech, fleet_fire_power, fleet_speed):
 	#   SALVAR TEMPO DOS TIMERS EM ARQUIVO
+	in_expedition = true
 	location.searching += 1
 	expedition_location = location
+	expedition_type = type
 	randomize()
 	var lost_in_sea_RNG = rand_range(1,location.navegationDifficulty)
 	if lost_in_sea_RNG > fleet_navegation_tech*2:
@@ -172,8 +187,7 @@ func new_expedition(location, fleet_navegation_tech, fleet_fire_power, fleet_spe
 		$FailureTimeout.start()
 		sail()
 		return
-	var battle_RNG = rand_range(1,location.dangerousness)
-	if battle_RNG > 10:
+	if battle_RNG:
 		var damage_RNG = rand_range(1,location.dangerousness*20)/fleet_fire_power
 		life -= damage_RNG
 		if life <= 0:
@@ -188,13 +202,20 @@ func new_expedition(location, fleet_navegation_tech, fleet_fire_power, fleet_spe
 	sail()
 
 func _on_ExpeditionTimeout_timeout():
-	in_expedition = false
 	arrive()
-	print("found")
 	print(life)
-	expedition_location.found = true
+	if expedition_type == 1:
+		print("found")
+		expedition_location.found = true
+	elif expedition_type == 2:
+		print("colonized")
+		expedition_location.colonized = true
+	expedition_location.searching -= 1
 	expedition_location = null
-	
+	in_expedition = false
+	failure_time = 0
+	expedition_type = 0
+	expedition_time = 0
 
 func _on_FailureTimeout_timeout():
 	$ExpeditionTimeout.stop()
@@ -202,4 +223,8 @@ func _on_FailureTimeout_timeout():
 	GlobalVariables.totalShips -= 1
 	print("fail")
 	print(life)
+	in_expedition = false
+	failure_time = 0
+	expedition_type = 0
+	expedition_time = 0
 	queue_free()
