@@ -6,6 +6,7 @@ onready var building = false
 onready var purchased = false
 onready var currentBoat = []
 onready var currentFrame = 0
+var wait = 0
 
 func _ready():
 	check_load_state()
@@ -16,7 +17,7 @@ func _physics_process(delta):
 		visible = true
 	if building:
 		currentFrame = $Ship.frame
-	if currentFrame == 7 and $Releasing.is_stopped():
+	if currentFrame == 7 and $Releasing.is_stopped() and wait == 0:
 		release()
 
 func buildShip(speed, resistance, size, navegation_technologies, fire_power, improvement = false, boat = [1,1]):
@@ -102,3 +103,11 @@ func check_load_state():
 func _on_TestButton2_pressed():				#linha de teste
 	if not building:						#linha de teste
 		buildShip(2,2,2,2,2,false,[1,1])	#linha de teste
+
+
+func _on_Area2D_area_entered(area):
+	wait += 1
+
+
+func _on_Area2D_area_exited(area):
+	wait -= 1
