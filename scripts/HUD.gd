@@ -21,7 +21,8 @@ var totalEstaleiros = 0
 var labelEstaleiro = 1
 var verificar = false
 var totalTecnologias = 1
-var barcoSelecionado = 6
+var barcoSelecionado = 7
+var barcoDANIFICADO = 0
 var pagina = 1
 signal salvar
 func _ready():
@@ -57,6 +58,7 @@ func _process(delta):
 		
 			if get_parent().get_node("YSort").get_child(i).purchased == true:
 				
+				totalEstaleiros +=1
 				labelEstaleiro+= 1
 				$Holder/Estabelecimento_background/Total2.text = str(n) + "/6"
 				n += 1
@@ -76,6 +78,7 @@ func _process(delta):
 			$Holder/AprimorarBarco_background.visible = false
 			$Holder/NovoBarco_background.visible = false
 			$Holder/RepararBarco_background.visible = false
+			
 			onScreen = false
 			onMenu = true
 			isNavigation = false
@@ -964,6 +967,7 @@ func _on_BussolButton_pressed():
 		$Holder/Studdy_background/total1.text = " 1/1"
 		GlobalVariables.compass = true
 		GlobalVariables.coins -= 3000
+		totalTecnologias += 2
 		
 	pass # Replace with function body.
 
@@ -975,7 +979,7 @@ func _on_CartografiaButton_pressed():
 		$Holder/Studdy_background/total2.text = " 1/1"
 		GlobalVariables.cartography = true
 		GlobalVariables.coins -= 3500
-		
+		totalTecnologias+=1
 	pass # Replace with function body.
 
 
@@ -986,7 +990,7 @@ func _on_AstrolabioButton_pressed():
 		$Holder/Studdy_background/total3.text = " 1/1"
 		GlobalVariables.astrolabe = true
 		GlobalVariables.coins -= 3500
-		
+		totalTecnologias+=1
 	pass # Replace with function body.
 
 
@@ -1034,8 +1038,9 @@ func _on_Estaleiro2Button_pressed():
 	
 	if $Holder/Estabelecimento_background.visible == true:
 		$Holder/Estabelecimento_background/Total2.text = str(labelEstaleiro) + "/6"
-		get_parent().get_node("YSort").get_child(totalEstaleiros).purchased = true
+		
 		if totalEstaleiros <5 && get_parent().get_node("YSort").get_child(5).purchased == false :
+			get_parent().get_node("YSort").get_child(totalEstaleiros).purchased = true
 			totalEstaleiros += 1
 			labelEstaleiro += 1
 		
@@ -1167,10 +1172,11 @@ func _on_AprimorarBarco_button_pressed():
 				$Holder/AprimorarBarco_background.visible = true
 				$Holder/AprimorarBarco_background/totalBARCOS.text = str(pagina)+"/"+str(GlobalVariables.totalShips)
 				velocidade = get_parent().get_node("YSort").get_child(barcoSelecionado).speed
-				resistencia = 1
-				tamanho = 1
-				tecnologias = 1
-				poderFogo = 1
+				resistencia = get_parent().get_node("YSort").get_child(barcoSelecionado).resistance
+				tamanho = get_parent().get_node("YSort").get_child(barcoSelecionado).size
+				tecnologias = get_parent().get_node("YSort").get_child(barcoSelecionado).navegation_technologies
+				poderFogo = get_parent().get_node("YSort").get_child(barcoSelecionado).fire_power
+				
 				if get_parent().get_node("YSort").get_child(barcoSelecionado) is KinematicBody2D: 
 					
 					
@@ -1368,17 +1374,22 @@ func _on_SairReparar_button_pressed():
 func _on_Reparar_Barco_pressed():
 	
 	if $Holder/Estaleiro_background.visible == true:
-		
+		pagina = 1
+		barcoDANIFICADO = 0
+		get_parent().get_node("YSort").get_child(7).life -= 2
 		for i in range (0,24+6):
 			
-			if get_parent().get_node("YSort").get_child(i) is KinematicBody2D:
+			if get_parent().get_node("YSort").get_child(i) is KinematicBody2D and get_parent().get_node("YSort").get_child(i).name != "TaxesShip":
 				
 				if get_parent().get_node("YSort").get_child(i).life < 100:
 					
 					$Holder/Estaleiro_background.visible = false
 					$Holder/RepararBarco_background.visible = true
 					
-		
+					barcoDANIFICADO += 1
+					
+					
+		$Holder/RepararBarco_background/Contador.text = str(pagina)+"/"+str(barcoDANIFICADO)
 		if $Holder/RepararBarco_background.visible == false:
 			
 			$Holder/Estaleiro_background/semEspacoPlayer.play("FLIP4")
@@ -1624,13 +1635,13 @@ func _on_PROXIMO_pressed():
 	
 	if $Holder/AprimorarBarco_background.visible == true:
 		
-		if barcoSelecionado < 6+GlobalVariables.totalShips-1:
+		if barcoSelecionado < 7+GlobalVariables.totalShips-1:
 			pagina +=1 
 			barcoSelecionado += 1
 		
 		
 		else:
-			barcoSelecionado = 6
+			barcoSelecionado = 7
 			pagina = 1
 		
 		$Holder/AprimorarBarco_background/totalBARCOS.text = str(pagina)+"/"+str(GlobalVariables.totalShips)
@@ -1640,5 +1651,104 @@ func _on_PROXIMO_pressed():
 		$Holder/AprimorarBarco_background/total4.text = str(get_parent().get_node("YSort").get_child(barcoSelecionado).navegation_technologies)+"/"+str(totalTecnologias)
 		$Holder/AprimorarBarco_background/total5.text = str(get_parent().get_node("YSort").get_child(barcoSelecionado).fire_power)+"/"+str(GlobalVariables.canhao)
 		velocidade = get_parent().get_node("YSort").get_child(barcoSelecionado).speed
+		resistencia = get_parent().get_node("YSort").get_child(barcoSelecionado).resistance
+		tamanho = get_parent().get_node("YSort").get_child(barcoSelecionado).size
+		tecnologias = get_parent().get_node("YSort").get_child(barcoSelecionado).navegation_technologies
+		poderFogo = get_parent().get_node("YSort").get_child(barcoSelecionado).fire_power
 		print(velocidade)
+	pass # Replace with function body.
+
+
+func _on_resistencia_button_pressed():
+	
+	if $Holder/AprimorarBarco_background.visible == true:
+		
+		if get_parent().get_node("YSort").get_child(barcoSelecionado).resistance<5 :
+			
+			if resistencia < GlobalVariables.Madeira:
+			
+				resistencia +=1
+				
+				$Holder/AprimorarBarco_background/total2.text = str(resistencia)+"/"+str(GlobalVariables.Madeira)
+		
+			else :
+				
+				resistencia = get_parent().get_node("YSort").get_child(barcoSelecionado).resistance
+				$Holder/AprimorarBarco_background/total2.text = str(resistencia)+"/"+str(GlobalVariables.Madeira)
+		pass
+	pass # Replace with function body.
+
+
+func _on_tamanho_button_pressed():
+	
+	if $Holder/AprimorarBarco_background.visible == true:
+		
+		if get_parent().get_node("YSort").get_child(barcoSelecionado).size<3 :
+			
+			if tamanho < GlobalVariables.arquitetura_nautica:
+			
+				tamanho +=1
+				
+				$Holder/AprimorarBarco_background/total3.text = str(tamanho)+"/"+str(GlobalVariables.arquitetura_nautica)
+		
+			else :
+				
+				tamanho = get_parent().get_node("YSort").get_child(barcoSelecionado).size
+				$Holder/AprimorarBarco_background/total3.text = str(tamanho)+"/"+str(GlobalVariables.arquitetura_nautica)
+		pass
+	pass # Replace with function body.
+
+
+func _on_tecnologias_button_pressed():
+	
+	
+	if $Holder/AprimorarBarco_background.visible == true:
+		
+		if get_parent().get_node("YSort").get_child(barcoSelecionado).navegation_technologies<5 :
+			
+			if tecnologias < totalTecnologias:
+			
+				tecnologias +=1
+				
+				$Holder/AprimorarBarco_background/total4.text = str(tecnologias)+"/"+str(totalTecnologias)
+		
+			else :
+				
+				tecnologias = get_parent().get_node("YSort").get_child(barcoSelecionado).navegation_technologies
+				$Holder/AprimorarBarco_background/total4.text = str(tecnologias)+"/"+str(totalTecnologias)
+		pass
+	pass # Replace with function body.
+
+
+func _on_poder_fogo_button_pressed():
+	
+	if $Holder/AprimorarBarco_background.visible == true:
+		if get_parent().get_node("YSort").get_child(barcoSelecionado).fire_power<5 :
+			
+				if poderFogo < GlobalVariables.canhao:
+			
+					poderFogo +=1
+				
+					$Holder/AprimorarBarco_background/total5.text = str(poderFogo)+"/"+str(GlobalVariables.canhao)
+		
+				else :
+				
+					poderFogo = get_parent().get_node("YSort").get_child(barcoSelecionado).fire_power
+					$Holder/AprimorarBarco_background/total5.text = str(poderFogo)+"/"+str(GlobalVariables.canhao)
+		
+	pass # Replace with function body.
+
+
+func _on_comprar_melhorias_pressed():
+	
+	if $Holder/AprimorarBarco_background.visible == true:
+		if get_parent().get_node("YSort").get_child(barcoSelecionado).anchored == true and poderFogo > get_parent().get_node("YSort").get_child(barcoSelecionado).fire_power or velocidade > get_parent().get_node("YSort").get_child(barcoSelecionado).speed or resistencia > get_parent().get_node("YSort").get_child(barcoSelecionado).resistance or tecnologias > get_parent().get_node("YSort").get_child(barcoSelecionado).navegation_technologies:
+			print("ANCORADO")
+			for i in range(0,6):
+				
+				get_parent().get_node("YSort").get_child(i).buildShip(velocidade,resistencia,tamanho,tecnologias,poderFogo,true,[get_parent().get_node("YSort").get_child(barcoSelecionado).resistance,get_parent().get_node("YSort").get_child(barcoSelecionado).fire_power])
+				
+				$Holder/AprimorarBarco_background.visible = false
+				$Holder/Estaleiro_background.visible = true
+				break
 	pass # Replace with function body.
