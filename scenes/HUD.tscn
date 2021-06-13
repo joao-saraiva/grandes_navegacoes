@@ -2843,6 +2843,7 @@ __meta__ = {
 position = Vector2( -22.4908, 30.0592 )
 scale = Vector2( 5, 5 )
 frames = SubResource( 9 )
+frame = 2
 playing = true
 
 [node name="Coins" type="Label" parent="Holder/HBoxContainer"]

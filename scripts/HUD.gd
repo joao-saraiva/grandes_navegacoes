@@ -1376,11 +1376,11 @@ func _on_Reparar_Barco_pressed():
 	if $Holder/Estaleiro_background.visible == true:
 		pagina = 1
 		barcoDANIFICADO = 0
-		get_parent().get_node("YSort").get_child(7).life -= 2
+		
 		for i in range (0,24+6):
 			
 			if get_parent().get_node("YSort").get_child(i) is KinematicBody2D and get_parent().get_node("YSort").get_child(i).name != "TaxesShip":
-				
+				get_parent().get_node("YSort").get_child(7).life -= 2
 				if get_parent().get_node("YSort").get_child(i).life < 100:
 					
 					$Holder/Estaleiro_background.visible = false
@@ -1390,6 +1390,13 @@ func _on_Reparar_Barco_pressed():
 					
 					
 		$Holder/RepararBarco_background/Contador.text = str(pagina)+"/"+str(barcoDANIFICADO)
+		$Holder/RepararBarco_background/Label2.text = "VIDA    = "+str(get_parent().get_node("YSort").get_child(7).life )
+		$Holder/RepararBarco_background/Label3.text = "VEL     = "+str(get_parent().get_node("YSort").get_child(7).speed)
+		$Holder/RepararBarco_background/Label4.text = "RES     = "+str(get_parent().get_node("YSort").get_child(7).resistance)
+		$Holder/RepararBarco_background/Label5.text = "TAM     = "+str(get_parent().get_node("YSort").get_child(7).size)
+		$Holder/RepararBarco_background/Label6.text = "TEC     = "+str(get_parent().get_node("YSort").get_child(7).navegation_technologies)
+		$Holder/RepararBarco_background/Label7.text = "POD     = "+str(get_parent().get_node("YSort").get_child(7).fire_power)
+		
 		if $Holder/RepararBarco_background.visible == false:
 			
 			$Holder/Estaleiro_background/semEspacoPlayer.play("FLIP4")
