@@ -2140,12 +2140,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="salvar" from="HUD" to="YSort" method="_on_HUD_salvar"]
-[connection signal="pressed" from="TestButton2" to="YSort/Shipyard2" method="_on_TestButton2_pressed"]
-[connection signal="pressed" from="TestButton2" to="YSort/Shipyard4" method="_on_TestButton2_pressed"]
 [connection signal="pressed" from="TestButton2" to="YSort/Shipyard5" method="_on_TestButton2_pressed"]
-[connection signal="pressed" from="TestButton2" to="YSort/Shipyard6" method="_on_TestButton2_pressed"]
+[connection signal="pressed" from="TestButton2" to="YSort/Shipyard2" method="_on_TestButton2_pressed"]
 [connection signal="pressed" from="TestButton2" to="YSort/Shipyard1" method="_on_TestButton2_pressed"]
+[connection signal="pressed" from="TestButton2" to="YSort/Shipyard4" method="_on_TestButton2_pressed"]
 [connection signal="pressed" from="TestButton2" to="YSort/Shipyard3" method="_on_TestButton2_pressed"]
+[connection signal="pressed" from="TestButton2" to="YSort/Shipyard6" method="_on_TestButton2_pressed"]
 [connection signal="pressed" from="TestButton3" to="." method="_on_TestButton3_pressed"]
 [connection signal="pressed" from="TestButton4" to="YSort" method="_on_TestButton4_pressed"]
 [connection signal="pressed" from="Button" to="Button" method="_on_Button_pressed"]

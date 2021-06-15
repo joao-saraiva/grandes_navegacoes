@@ -22,9 +22,11 @@ config/icon="res://icon.png"
 
 [autoload]
 
+Serial="*res://scripts/Serial.gd"
 SaveFile="*res://scripts/SaveFile.gd"
 GlobalVariables="*res://scripts/GlobalVariables.gd"
 Locations="*res://scripts/Locations.gd"
+Expedition="*res://scripts/Expedition.gd"
 
 [display]
 
