@@ -102,7 +102,7 @@ func check_load_state():
 
 func _on_TestButton2_pressed():				#linha de teste
 	if not building:						#linha de teste
-		buildShip(2,2,2,2,2,false,[1,1])	#linha de teste
+		buildShip(30,115,3,115,115,false,[1,1])	#linha de teste
 
 
 func _on_Area2D_area_entered(area):

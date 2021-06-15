@@ -7,8 +7,18 @@ func _on_TestButton4_pressed():		#test function
 	SaveFile.data = {
 		"coins" : 0,
 		"totalShips" : 0,
+		"inventorySize": 100,
 		inventory = {
-			"wine": 0
+			wine = {"amout": 0, "weight": 3},
+			sugar = {"amout": 0, "weight": 1},
+			beer = {"amout": 0, "weight": 3},
+			Nutmeg = {"amout": 0, "weight": 1},
+			BlackPepper = {"amout": 0, "weight": 1},
+			clove = {"amout": 0, "weight": 1},
+			ginger = {"amout": 0, "weight": 1},
+			cloth = {"amount": 0, "weigth": 3},
+			gold = {"amout": 0, "weight": 5},
+			silver = {"amout": 0, "weight": 5}
 		},
 		ships = {
 			
@@ -38,8 +48,18 @@ func save():
 	SaveFile.data = {
 		"coins" : GlobalVariables.coins,
 		"totalShips" : GlobalVariables.totalShips,
+		"inventorySize": 100,
 		inventory = {
-			"wine": GlobalVariables.wineCount
+			wine = {"amount": GlobalVariables.wineAmount, "weight": 3},
+			sugar = {"amount":GlobalVariables.sugarAmount, "weight": 1},
+			beer = {"amount": GlobalVariables.beerAmount, "weight": 3},
+			Nutmeg = {"amount": GlobalVariables.NutmegAmount, "weight": 1},
+			BlackPepper = {"amount": GlobalVariables.BlackPepperAmount, "weight": 1},
+			clove = {"amount": GlobalVariables.cloveAmount, "weight": 1},
+			ginger = {"amount": GlobalVariables.gingerAmount, "weight": 1},
+			cloth = {"amount": GlobalVariables.clothAmount, "weight": 3},
+			gold = {"amount": GlobalVariables.goldAmount, "weight": 5},
+			silver = {"amount": GlobalVariables.silverAmount, "weight": 5}
 		},
 		ships = {
 			
@@ -63,7 +83,7 @@ func save():
 	}
 	
 	for node in children:
-		if node is KinematicBody2D and node.name != "TaxesShip":
+		if node is KinematicBody2D and node.name != "TaxesShip" and node.name != "MuslimShip":
 			print(node.name)
 			SaveFile.data.ships[node.name] = {
 				"position":node.position,
@@ -82,7 +102,14 @@ func save():
 				 "expedition_type": node.expedition_type,
 				 "in_expedition": node.in_expedition,
 				 "expedition_time": node.expedition_time,
-				 "failure_time": node.failure_time
+				 "failure_time": node.failure_time,
+				"inventory": node.inventory,
+				"buy_list": node.buy_list,
+				"on_comertial_route": node.on_comertial_route,
+				"battle_rand":node.battle_rand,
+				"fleet_tech": node.fleet_tech,
+				"fleet_power": node.fleet_power,
+				"fleet_spd": node.fleet_spd
 			}
 			if node.anchored_area != null:
 				SaveFile.data.ships[node.name]["anchored_area"] = node.anchored_area.name

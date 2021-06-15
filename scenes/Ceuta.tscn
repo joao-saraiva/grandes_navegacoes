@@ -2060,10 +2060,10 @@ __meta__ = {
 }
 
 [node name="Button" type="Button" parent="."]
-margin_left = 43.1122
-margin_top = 464.514
-margin_right = 116.112
-margin_bottom = 534.514
+margin_left = 33.7683
+margin_top = 413.79
+margin_right = 106.768
+margin_bottom = 483.79
 text = "explorar"
 script = ExtResource( 1 )
 __meta__ = {
@@ -2071,10 +2071,10 @@ __meta__ = {
 }
 
 [node name="Button2" type="Button" parent="."]
-margin_left = 44.894
-margin_top = 560.731
-margin_right = 117.894
-margin_bottom = 630.731
+margin_left = 32.8804
+margin_top = 493.989
+margin_right = 105.88
+margin_bottom = 563.989
 text = "colonizar"
 script = ExtResource( 1 )
 __meta__ = {
@@ -2082,10 +2082,10 @@ __meta__ = {
 }
 
 [node name="Button3" type="Button" parent="."]
-margin_left = 42.0656
-margin_top = 651.241
-margin_right = 115.066
-margin_bottom = 721.241
+margin_left = 14.034
+margin_top = 567.146
+margin_right = 160.034
+margin_bottom = 637.146
 text = "printar lista de locais"
 script = ExtResource( 1 )
 __meta__ = {
@@ -2095,16 +2095,64 @@ __meta__ = {
 [node name="TaxesTimer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
+
+[node name="Button4" type="Button" parent="."]
+margin_left = 18.2038
+margin_top = 642.701
+margin_right = 235.204
+margin_bottom = 676.701
+text = "abrir contrato com muçulmanos"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button5" type="Button" parent="."]
+margin_left = 20.8735
+margin_top = 680.077
+margin_right = 237.873
+margin_bottom = 714.077
+text = "abrir contrato com india"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button6" type="Button" parent="."]
+margin_left = 57.4587
+margin_top = 725.461
+margin_right = 303.459
+margin_bottom = 759.461
+text = "atribuir barcos para contrato da india"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button7" type="Button" parent="."]
+margin_left = 308.865
+margin_top = 725.824
+margin_right = 430.865
+margin_bottom = 759.824
+text = "printar inventario"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="salvar" from="HUD" to="YSort" method="_on_HUD_salvar"]
-[connection signal="pressed" from="TestButton2" to="YSort/Shipyard4" method="_on_TestButton2_pressed"]
 [connection signal="pressed" from="TestButton2" to="YSort/Shipyard2" method="_on_TestButton2_pressed"]
-[connection signal="pressed" from="TestButton2" to="YSort/Shipyard3" method="_on_TestButton2_pressed"]
+[connection signal="pressed" from="TestButton2" to="YSort/Shipyard4" method="_on_TestButton2_pressed"]
 [connection signal="pressed" from="TestButton2" to="YSort/Shipyard5" method="_on_TestButton2_pressed"]
 [connection signal="pressed" from="TestButton2" to="YSort/Shipyard6" method="_on_TestButton2_pressed"]
 [connection signal="pressed" from="TestButton2" to="YSort/Shipyard1" method="_on_TestButton2_pressed"]
+[connection signal="pressed" from="TestButton2" to="YSort/Shipyard3" method="_on_TestButton2_pressed"]
 [connection signal="pressed" from="TestButton3" to="." method="_on_TestButton3_pressed"]
 [connection signal="pressed" from="TestButton4" to="YSort" method="_on_TestButton4_pressed"]
 [connection signal="pressed" from="Button" to="Button" method="_on_Button_pressed"]
 [connection signal="pressed" from="Button2" to="Button2" method="_on_Button2_pressed"]
 [connection signal="pressed" from="Button3" to="Button3" method="_on_Button3_pressed"]
 [connection signal="timeout" from="TaxesTimer" to="YSort/TaxesShip" method="_on_TaxesTimer_timeout"]
+[connection signal="pressed" from="Button4" to="Button4" method="_on_Button4_pressed"]
+[connection signal="pressed" from="Button5" to="Button5" method="_on_Button5_pressed"]
+[connection signal="pressed" from="Button6" to="Button6" method="_on_Button6_pressed"]
+[connection signal="pressed" from="Button7" to="Button7" method="_on_Button7_pressed"]

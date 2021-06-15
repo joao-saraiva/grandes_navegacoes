@@ -97,10 +97,9 @@ func _on_TaxesTimer_timeout():
 	arrive()
 
 func check_load():
-	if not SaveFile.loadData.taxesship.empty():
+	if SaveFile.loadData != null:
 		position = SaveFile.loadData.taxesship.position
 		movement = SaveFile.loadData.taxesship.movement
-		
 		anchored = SaveFile.loadData.taxesship.anchored
 		arriving = SaveFile.loadData.taxesship.arriving
 		sailing = SaveFile.loadData.taxesship.sailing

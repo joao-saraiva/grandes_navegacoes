@@ -1,9 +1,10 @@
 extends Node2D
 onready var ship_tscn = preload("res://scenes/Ship.tscn")
 func _ready():
-	print(SaveFile.loadData)
-	#get_node("YSort").save()
 	if SaveFile.loadData == null:
+		get_node("YSort").save()
+		SaveFile.Load_request()
+		print(SaveFile.loadData)
 		return
 	
 	for ship in SaveFile.loadData.ships:
@@ -30,9 +31,17 @@ func _ready():
 		loadShip.expedition_time = SaveFile.loadData.ships[ship].expedition_time
 		loadShip.failure_time = SaveFile.loadData.ships[ship].failure_time
 		loadShip.expedition_type = SaveFile.loadData.ships[ship].expedition_type
+		loadShip.inventory = SaveFile.loadData.ships[ship].inventory
+		loadShip.buy_list = SaveFile.loadData.ships[ship].buy_list
+		loadShip.on_comertial_route = SaveFile.loadData.ships[ship].on_comertial_route
+		loadShip.battle_rand = SaveFile.loadData.ships[ship].battle_rand
+		loadShip.fleet_tech = SaveFile.loadData.ships[ship].fleet_tech
+		loadShip.fleet_spd = SaveFile.loadData.ships[ship].fleet_spd
+		loadShip.fleet_power = SaveFile.loadData.ships[ship].fleet_power
+
 		loadShip.define_sprite()
 		get_node("YSort").add_child(loadShip)
 	
 
 func _on_TestButton3_pressed():			#teste
-	GlobalVariables.coins += 100		#teste
+	GlobalVariables.coins -= 100		#teste

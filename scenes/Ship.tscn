@@ -64,7 +64,11 @@ one_shot = true
 
 [node name="FailureTimeout" type="Timer" parent="."]
 one_shot = true
+
+[node name="BuySellTimeout" type="Timer" parent="."]
+one_shot = true
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
 [connection signal="timeout" from="DetectionDelay" to="." method="_on_DetectionDelay_timeout"]
 [connection signal="timeout" from="ExpeditionTimeout" to="." method="_on_ExpeditionTimeout_timeout"]
 [connection signal="timeout" from="FailureTimeout" to="." method="_on_FailureTimeout_timeout"]
+[connection signal="timeout" from="BuySellTimeout" to="." method="_on_BuySellTimeout_timeout"]

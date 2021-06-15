@@ -1,11 +1,11 @@
 extends KinematicBody2D
 
 var movement = Vector2(0,0)
-export var speed = 2
-export var resistance = 1
-export var size = 2
-export var navegation_technologies = 1
-export var fire_power = 1
+var speed = 2
+var resistance = 1
+var size = 2
+var navegation_technologies = 1
+var fire_power = 1
 
 export var life = 100
 var anchorage_areas = []
@@ -21,7 +21,27 @@ var lost_in_sea = false
 var killed_in_battle = false
 var expedition_time = 0
 var failure_time = 0
-
+var buy_list = null
+var on_comertial_route = false
+var battle_rand = 0
+var fleet_tech = 0
+var fleet_power = 0
+var fleet_spd = 0
+onready var inventory = {
+	"size": size*10,
+	items = {
+		wine = {"amount": 0, "weight": 3},
+		sugar = {"amount": 0, "weight": 1},
+		beer = {"amount": 0, "weight": 3},
+		Nutmeg = {"amount": 0, "weight": 1},
+		BlackPepper = {"amount": 0, "weight": 1},
+		clove = {"amount": 0, "weight": 1},
+		ginger = {"amount": 0, "weight": 1},
+		cloth = {"amount": 0, "weight": 3},
+		gold = {"amount": 0, "weight": 5},
+		silver = {"amount": 0, "weight": 5}
+	}
+}
 func _ready():
 	if in_expedition and failure_time != 0:
 		$FailureTimeout.wait_time = failure_time
@@ -101,7 +121,11 @@ func dock():
 	if position.x <= anchored_area.position.x:
 		movement.x = 0
 		arriving = false
-		anchored = true
+		if not on_comertial_route:
+			anchored = true
+		else:
+			store_items()
+			new_expedition(4, buy_list, expedition_location, battle_rand, fleet_tech, fleet_power, fleet_spd)
 	elif movement.x < -0.1 and distance < 500:
 		if speed != 1:
 			if distance > 300:
@@ -171,12 +195,16 @@ func define_sprite():
 			else:
 				$Sprite.texture = load("res://assets/ships/ship35.tres")
 
-func new_expedition(type, location, battle_RNG, fleet_navegation_tech, fleet_fire_power, fleet_speed):
+func new_expedition(type, item_list, location, battle_RNG, fleet_navegation_tech, fleet_fire_power, fleet_speed):
 	#   SALVAR TEMPO DOS TIMERS EM ARQUIVO
 	in_expedition = true
 	location.searching += 1
 	expedition_location = location
 	expedition_type = type
+	battle_rand = battle_RNG
+	fleet_tech = fleet_navegation_tech
+	fleet_power = fleet_fire_power
+	fleet_spd = fleet_speed
 	randomize()
 	var lost_in_sea_RNG = rand_range(1,location.navegationDifficulty)
 	if lost_in_sea_RNG > fleet_navegation_tech*2:
@@ -199,20 +227,34 @@ func new_expedition(type, location, battle_RNG, fleet_navegation_tech, fleet_fir
 			return
 	$ExpeditionTimeout.wait_time = location.distance/fleet_speed
 	$ExpeditionTimeout.start()
+	if expedition_type == 4 or expedition_type == 5:
+		on_comertial_route = true
+		if expedition_type == 4:
+			buy_list = item_list
+		$BuySellTimeout.wait_time = location.distance/fleet_speed/2
+		$BuySellTimeout.start()
 	sail()
 
 func _on_ExpeditionTimeout_timeout():
 	arrive()
-	print(life)
 	if expedition_type == 1:
 		print("found")
 		expedition_location.found = true
+		in_expedition = false
 	elif expedition_type == 2:
 		print("colonized")
 		expedition_location.colonized = true
+		in_expedition = false
+	elif expedition_type == 3:
+		print("contract state changed")
+		print(expedition_location)
+		expedition_location.contract.open = true
+		in_expedition = false
+	
 	expedition_location.searching -= 1
-	expedition_location = null
-	in_expedition = false
+	if expedition_type != 4:
+		expedition_location = null
+	
 	failure_time = 0
 	expedition_type = 0
 	expedition_time = 0
@@ -228,3 +270,55 @@ func _on_FailureTimeout_timeout():
 	expedition_type = 0
 	expedition_time = 0
 	queue_free()
+
+func _on_BuySellTimeout_timeout():
+	if expedition_type == 4:
+		for item in buy_list:
+			if GlobalVariables.coins - (buy_list[item] * Locations.exploration.india.price[item]) >= 0:
+				GlobalVariables.coins -= buy_list[item] * Locations.exploration.india.price[item]
+				inventory.items[item].amount = buy_list[item]
+
+func remove_items():
+	inventory.items = {
+		wine = {"amount": 0, "weight": 3},
+		sugar = {"amount": 0, "weight": 1},
+		beer = {"amount": 0, "weight": 3},
+		Nutmeg = {"amount": 0, "weight": 1},
+		BlackPepper = {"amount": 0, "weight": 1},
+		clove = {"amount": 0, "weight": 1},
+		ginger = {"amount": 0, "weight": 1},
+		cloth = {"amount": 0, "weight": 3},
+		gold = {"amount": 0, "weight": 5},
+		silver = {"amount": 0, "weight": 5}
+	}
+
+func store_items():
+	var totalshipweight = 0
+	for item in inventory.items:
+		print(inventory)
+		totalshipweight += inventory.items[item].amount * inventory.items[item].weight
+	var totalportweight
+	for item in SaveFile.loadData.inventory:
+		totalportweight = SaveFile.loadData.inventory[item].amount * SaveFile.loadData.inventory[item].weight
+		
+	if totalportweight + totalshipweight > SaveFile.loadData.inventorySize:
+		store_items()
+	else:
+		for item in inventory.items:
+			SaveFile.loadData.inventory[item].amount += inventory.items[item].amount
+		remove_items()
+		
+func empty():
+	return inventory.items == {
+		wine = {"amount": 0, "weight": 3},
+		sugar = {"amount": 0, "weight": 1},
+		beer = {"amount": 0, "weight": 3},
+		Nutmeg = {"amount": 0, "weight": 1},
+		BlackPepper = {"amount": 0, "weight": 1},
+		clove = {"amount": 0, "weight": 1},
+		ginger = {"amount": 0, "weight": 1},
+		cloth = {"amount": 0, "weight": 3},
+		gold = {"amount": 0, "weight": 5},
+		silver = {"amount": 0, "weight": 5}
+	}
+
