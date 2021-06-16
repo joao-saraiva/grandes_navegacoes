@@ -32,8 +32,8 @@ func _ready():
 		loadShip.failure_time = SaveFile.loadData.ships[ship].failure_time
 		loadShip.expedition_type = SaveFile.loadData.ships[ship].expedition_type
 		loadShip.inventory = SaveFile.loadData.ships[ship].inventory
-		loadShip.buy_list = SaveFile.loadData.ships[ship].buy_list
-		loadShip.on_comertial_route = SaveFile.loadData.ships[ship].on_comertial_route
+		loadShip.buy_sell_list = SaveFile.loadData.ships[ship].buy_sell_list
+		loadShip.on_commercial_route = SaveFile.loadData.ships[ship].on_commercial_route
 		loadShip.battle_rand = SaveFile.loadData.ships[ship].battle_rand
 		loadShip.fleet_tech = SaveFile.loadData.ships[ship].fleet_tech
 		loadShip.fleet_spd = SaveFile.loadData.ships[ship].fleet_spd

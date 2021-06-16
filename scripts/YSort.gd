@@ -38,7 +38,9 @@ func _on_TestButton4_pressed():		#test function
 			"vela": 1,
 			"arquitetura_nautica": 1
 		},
-		locations = {}
+		locations = {},
+		"buy_fleet": [],
+		"sell_fleet": []
 	}
 	SaveFile.Save_request()
 
@@ -79,7 +81,9 @@ func save():
 			"vela": GlobalVariables.vela,
 			"arquitetura_nautica": GlobalVariables.arquitetura_nautica
 		},
-		locations = Locations.exploration
+		locations = Locations.exploration,
+		"buy_fleet_list": Expedition.buy_fleet_list,
+		"sell_fleet_list": Expedition.sell_fleet_list
 	}
 	
 	for node in children:
@@ -104,8 +108,8 @@ func save():
 				 "expedition_time": node.expedition_time,
 				 "failure_time": node.failure_time,
 				"inventory": node.inventory,
-				"buy_list": node.buy_list,
-				"on_comertial_route": node.on_comertial_route,
+				"buy_sell_list": node.buy_sell_list,
+				"on_commercial_route": node.on_commercial_route,
 				"battle_rand":node.battle_rand,
 				"fleet_tech": node.fleet_tech,
 				"fleet_power": node.fleet_power,

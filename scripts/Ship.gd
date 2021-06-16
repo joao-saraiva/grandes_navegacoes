@@ -21,8 +21,8 @@ var lost_in_sea = false
 var killed_in_battle = false
 var expedition_time = 0
 var failure_time = 0
-var buy_list = null
-var on_comertial_route = false
+var buy_sell_list = null
+var on_commercial_route = false
 var battle_rand = 0
 var fleet_tech = 0
 var fleet_power = 0
@@ -86,7 +86,6 @@ func sail():
 	sailing = true
 
 func arrive():
-	print("arriving")
 	position = Vector2(1450, 384)
 	$Area2D.monitoring = true
 	$DetectionDelay.start()
@@ -121,11 +120,18 @@ func dock():
 	if position.x <= anchored_area.position.x:
 		movement.x = 0
 		arriving = false
-		if not on_comertial_route:
+		
+		if not on_commercial_route:
+			expedition_location = null
+			expedition_type = 0
+			in_expedition = false
 			anchored = true
 		else:
-			store_items()
-			new_expedition(4, buy_list, expedition_location, battle_rand, fleet_tech, fleet_power, fleet_spd)
+			if expedition_type == 4:
+				store_items()
+			elif expedition_type == 5:
+				take_items()
+			new_expedition(expedition_type, buy_sell_list, expedition_location, battle_rand, fleet_tech, fleet_power, fleet_spd)
 	elif movement.x < -0.1 and distance < 500:
 		if speed != 1:
 			if distance > 300:
@@ -198,7 +204,8 @@ func define_sprite():
 func new_expedition(type, item_list, location, battle_RNG, fleet_navegation_tech, fleet_fire_power, fleet_speed):
 	#   SALVAR TEMPO DOS TIMERS EM ARQUIVO
 	in_expedition = true
-	location.searching += 1
+	if not type == 5:
+		location.searching += 1
 	expedition_location = location
 	expedition_type = type
 	battle_rand = battle_RNG
@@ -228,55 +235,54 @@ func new_expedition(type, item_list, location, battle_RNG, fleet_navegation_tech
 	$ExpeditionTimeout.wait_time = location.distance/fleet_speed
 	$ExpeditionTimeout.start()
 	if expedition_type == 4 or expedition_type == 5:
-		on_comertial_route = true
+		on_commercial_route = true
+		buy_sell_list = item_list
 		if expedition_type == 4:
-			buy_list = item_list
-		$BuySellTimeout.wait_time = location.distance/fleet_speed/2
-		$BuySellTimeout.start()
+			$BuyTimeout.wait_time = location.distance/fleet_speed/2
+			$BuyTimeout.start()
+		if expedition_type == 5:
+			take_items()
+			$SellTimeout.wait_time = location.distance/fleet_speed/2
+			$SellTimeout.start()
 	sail()
 
 func _on_ExpeditionTimeout_timeout():
+	sailing = false
 	arrive()
 	if expedition_type == 1:
-		print("found")
 		expedition_location.found = true
-		in_expedition = false
 	elif expedition_type == 2:
-		print("colonized")
 		expedition_location.colonized = true
-		in_expedition = false
 	elif expedition_type == 3:
-		print("contract state changed")
-		print(expedition_location)
 		expedition_location.contract.open = true
-		in_expedition = false
 	
-	expedition_location.searching -= 1
-	if expedition_type != 4:
+	if not expedition_type == 5:
+		expedition_location.searching -= 1
+	if expedition_type < 4:
 		expedition_location = null
+		expedition_type = 0
+		in_expedition = false
 	
 	failure_time = 0
-	expedition_type = 0
 	expedition_time = 0
 
 func _on_FailureTimeout_timeout():
 	$ExpeditionTimeout.stop()
 	expedition_location.searching -= 1
 	GlobalVariables.totalShips -= 1
-	print("fail")
-	print(life)
 	in_expedition = false
 	failure_time = 0
 	expedition_type = 0
 	expedition_time = 0
 	queue_free()
 
-func _on_BuySellTimeout_timeout():
+func _on_BuyTimeout_timeout():
 	if expedition_type == 4:
-		for item in buy_list:
-			if GlobalVariables.coins - (buy_list[item] * Locations.exploration.india.price[item]) >= 0:
-				GlobalVariables.coins -= buy_list[item] * Locations.exploration.india.price[item]
-				inventory.items[item].amount = buy_list[item]
+		for item in buy_sell_list:
+			if GlobalVariables.coins - (buy_sell_list[item] * Locations.exploration.india.price[item]) >= 0:
+				GlobalVariables.coins -= buy_sell_list[item] * Locations.exploration.india.price[item]
+				inventory.items[item].amount = buy_sell_list[item]
+	print(inventory.items)
 
 func remove_items():
 	inventory.items = {
@@ -295,7 +301,6 @@ func remove_items():
 func store_items():
 	var totalshipweight = 0
 	for item in inventory.items:
-		print(inventory)
 		totalshipweight += inventory.items[item].amount * inventory.items[item].weight
 	var totalportweight
 	for item in SaveFile.loadData.inventory:
@@ -322,3 +327,16 @@ func empty():
 		silver = {"amount": 0, "weight": 5}
 	}
 
+func take_items():
+	for item in buy_sell_list:
+		if SaveFile.loadData.inventory[item].amount - buy_sell_list[item] < 0:
+			inventory.items[item].amount = SaveFile.loadData.inventory[item].amount
+			SaveFile.loadData.inventory[item].amount = 0
+		else:
+			inventory.items[item].amount = buy_sell_list[item]
+			SaveFile.loadData.inventory[item].amount -= buy_sell_list[item]
+
+func _on_SellTimeout_timeout():
+	for item in inventory.items:
+		GlobalVariables.coins += inventory.items[item].amount * expedition_location.price[item]
+	empty()

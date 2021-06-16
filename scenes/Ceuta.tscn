@@ -2030,40 +2030,40 @@ __meta__ = {
 shape = SubResource( 7 )
 
 [node name="TestButton2" type="Button" parent="."]
-margin_left = 35.9624
-margin_top = 253.329
-margin_right = 122.962
-margin_bottom = 273.329
+margin_left = 34.1806
+margin_top = 126.821
+margin_right = 121.18
+margin_bottom = 146.821
 text = "criar barco"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TestButton3" type="Button" parent="."]
-margin_left = 8.144
-margin_top = 279.411
-margin_right = 152.144
-margin_bottom = 299.411
+margin_left = 6.3622
+margin_top = 152.903
+margin_right = 150.362
+margin_bottom = 172.903
 text = "receber 100 moedas"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TestButton4" type="Button" parent="."]
-margin_left = 29.7377
-margin_top = 343.768
-margin_right = 117.738
-margin_bottom = 363.768
+margin_left = 27.9559
+margin_top = 217.26
+margin_right = 115.956
+margin_bottom = 237.26
 text = "Apagar save"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Button" type="Button" parent="."]
-margin_left = 33.7683
-margin_top = 413.79
-margin_right = 106.768
-margin_bottom = 483.79
+margin_left = 31.9865
+margin_top = 287.283
+margin_right = 104.986
+margin_bottom = 357.283
 text = "explorar"
 script = ExtResource( 1 )
 __meta__ = {
@@ -2071,10 +2071,10 @@ __meta__ = {
 }
 
 [node name="Button2" type="Button" parent="."]
-margin_left = 32.8804
-margin_top = 493.989
-margin_right = 105.88
-margin_bottom = 563.989
+margin_left = 31.0986
+margin_top = 367.481
+margin_right = 104.099
+margin_bottom = 437.481
 text = "colonizar"
 script = ExtResource( 1 )
 __meta__ = {
@@ -2082,10 +2082,10 @@ __meta__ = {
 }
 
 [node name="Button3" type="Button" parent="."]
-margin_left = 14.034
-margin_top = 567.146
-margin_right = 160.034
-margin_bottom = 637.146
+margin_left = 12.2522
+margin_top = 440.639
+margin_right = 158.252
+margin_bottom = 510.639
 text = "printar lista de locais"
 script = ExtResource( 1 )
 __meta__ = {
@@ -2097,10 +2097,10 @@ wait_time = 5.0
 one_shot = true
 
 [node name="Button4" type="Button" parent="."]
-margin_left = 18.2038
-margin_top = 642.701
-margin_right = 235.204
-margin_bottom = 676.701
+margin_left = 3.9494
+margin_top = 514.412
+margin_right = 220.949
+margin_bottom = 548.412
 text = "abrir contrato com muçulmanos"
 script = ExtResource( 1 )
 __meta__ = {
@@ -2108,10 +2108,10 @@ __meta__ = {
 }
 
 [node name="Button5" type="Button" parent="."]
-margin_left = 20.8735
-margin_top = 680.077
-margin_right = 237.873
-margin_bottom = 714.077
+margin_left = 0.643234
+margin_top = 550.94
+margin_right = 188.643
+margin_bottom = 584.94
 text = "abrir contrato com india"
 script = ExtResource( 1 )
 __meta__ = {
@@ -2119,33 +2119,66 @@ __meta__ = {
 }
 
 [node name="Button6" type="Button" parent="."]
-margin_left = 57.4587
-margin_top = 725.461
-margin_right = 303.459
-margin_bottom = 759.461
-text = "atribuir barcos para contrato da india"
+margin_left = 3.48554
+margin_top = 587.147
+margin_right = 249.486
+margin_bottom = 621.147
+text = "atribuir barcos para compra na india"
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Button7" type="Button" parent="."]
-margin_left = 308.865
-margin_top = 725.824
-margin_right = 430.865
-margin_bottom = 759.824
+margin_left = 200.961
+margin_top = 733.527
+margin_right = 322.961
+margin_bottom = 767.527
 text = "printar inventario"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button8" type="Button" parent="."]
+margin_left = 29.0899
+margin_top = 658.497
+margin_right = 245.09
+margin_bottom = 692.497
+text = "remover ultima frota de compra"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button9" type="Button" parent="."]
+margin_left = 78.8382
+margin_top = 694.336
+margin_right = 294.838
+margin_bottom = 728.336
+text = "remover ultima frota de venda"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button10" type="Button" parent="."]
+margin_left = 12.7199
+margin_top = 622.525
+margin_right = 242.72
+margin_bottom = 656.525
+text = "atribuir varcos para venda na italia"
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="salvar" from="HUD" to="YSort" method="_on_HUD_salvar"]
 [connection signal="pressed" from="TestButton2" to="YSort/Shipyard5" method="_on_TestButton2_pressed"]
-[connection signal="pressed" from="TestButton2" to="YSort/Shipyard2" method="_on_TestButton2_pressed"]
-[connection signal="pressed" from="TestButton2" to="YSort/Shipyard1" method="_on_TestButton2_pressed"]
-[connection signal="pressed" from="TestButton2" to="YSort/Shipyard4" method="_on_TestButton2_pressed"]
-[connection signal="pressed" from="TestButton2" to="YSort/Shipyard3" method="_on_TestButton2_pressed"]
 [connection signal="pressed" from="TestButton2" to="YSort/Shipyard6" method="_on_TestButton2_pressed"]
+[connection signal="pressed" from="TestButton2" to="YSort/Shipyard3" method="_on_TestButton2_pressed"]
+[connection signal="pressed" from="TestButton2" to="YSort/Shipyard1" method="_on_TestButton2_pressed"]
+[connection signal="pressed" from="TestButton2" to="YSort/Shipyard2" method="_on_TestButton2_pressed"]
+[connection signal="pressed" from="TestButton2" to="YSort/Shipyard4" method="_on_TestButton2_pressed"]
 [connection signal="pressed" from="TestButton3" to="." method="_on_TestButton3_pressed"]
 [connection signal="pressed" from="TestButton4" to="YSort" method="_on_TestButton4_pressed"]
 [connection signal="pressed" from="Button" to="Button" method="_on_Button_pressed"]
@@ -2156,3 +2189,6 @@ __meta__ = {
 [connection signal="pressed" from="Button5" to="Button5" method="_on_Button5_pressed"]
 [connection signal="pressed" from="Button6" to="Button6" method="_on_Button6_pressed"]
 [connection signal="pressed" from="Button7" to="Button7" method="_on_Button7_pressed"]
+[connection signal="pressed" from="Button8" to="Button8" method="_on_Button8_pressed"]
+[connection signal="pressed" from="Button9" to="Button9" method="_on_Button9_pressed"]
+[connection signal="pressed" from="Button10" to="Button10" method="_on_Button10_pressed"]
